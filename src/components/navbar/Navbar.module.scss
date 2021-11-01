@@ -1,0 +1,127 @@
+@import "@fontsource/overlock-sc";
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100&display=swap');
+
+.container{
+    height: 150px;
+    background: linear-gradient(0deg, rgba(204,204,204,0.26) 0%, rgba(198,198,198,0.09) 100%);
+    position: fixed;
+    left: 0;
+    right: 0;
+    transition: 0.5s;
+}
+.navbar{
+    margin: 0 100px;
+    height: 100%;
+    border-bottom: 0.01em rgba(255,255,255, 0.5) solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    transition: 0.5s;
+}
+.logo{
+    transition: 0.5s;
+    font-family: "Overlock SC";
+    font-size: 50px;
+    line-height: 61px;
+    letter-spacing: 0.15em;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    svg{
+        height: 46px;
+        width: 53px;
+        transition: 0.5s;
+        position: relative;
+        left: -10px;
+        path{
+            transition: 0.5s;
+        }
+        rect{
+            transition: 0.5s;
+        }
+    }
+}
+.navItemsContainer{
+    display: flex;
+    margin-bottom: 20px;
+    margin-right: 100px;
+    transition: 0.5s;
+    a{
+        transition: color 0.5s;
+        margin: 5px;
+        padding: 5px 10px;
+        font-family: "Overpass";
+        font-size: 24px;
+        color: white;
+        font-weight: 500;
+        transition: 0.5s;
+    }
+}
+// hover animatoin
+.navItems,
+.navItems:after,
+.navItems:before {
+  transition: all .5s;
+}
+.navItems{
+    position: relative;
+    transition: all 2s;
+    &::after{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 0%;
+        content: '.';
+        color: transparent;
+        background: white;
+        height: 1px;
+    }
+    &:hover::after{
+        width: 100%;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}
+// collapsed styles
+.collapsedContainer{
+    height: 70px;
+    background: #EEEEEE;
+}
+.collapsedNavbar{
+    margin: 0;
+    transition: 0.5s;
+}
+.collapsedLogo{
+    margin: 0;
+    color: rgb(37, 34, 34);
+    border: none;
+    font-size: 40px;
+    margin-left: 30px;
+    svg{
+        height: 40px;
+        width: 45px;
+        path{
+          fill:#EEEEEE;  
+        }
+        rect{
+            fill:rgb(37, 34, 34);
+        }
+        
+    }
+}
+.collapsedNavItemsContainer{
+    margin: 0 40px 0 0;
+    .collapsedNavItems{
+        color: rgb(37, 34, 34);
+        &::after{
+            background: rgb(37, 34, 34);
+        }
+    }
+}
+
+
