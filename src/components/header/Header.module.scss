@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Overpass:wght@100&display=swap');
 .container{
     width: 100%;
     background: linear-gradient(305deg, rgba(87,33,175,1) 0%, rgba(38,126,223,1) 100%);
@@ -5,7 +6,6 @@
     position: relative;
 }
 .coinsContainer {
-    border: 2px white solid;
     flex-grow: 1;
     height: auto;
     position: relative;
@@ -24,89 +24,104 @@
 }
 .headerDescription{
     width: 65%;
-    border: springgreen 2px solid;
     height: auto;
+    position: relative;
+    .description{
+        width: 250px;
+        margin-left: 150px;
+        position: absolute;
+        top:60px;
+        text-align: justify;
+        font-family: 'Open Sans', sans-serif;
+        color: #eee;
+        font-weight: 1.3rem;
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        b{
+            font-weight: 400;
+        }
+    }
 }
 .coinsContainer span {
     position: absolute;
 }
 .Coin1 {
-    top: 240px;
-    right: 100px;
-    animation: c1 4s infinite ;
-    transition: transform 0.5s;
+    // top: 240px;
+    // right: 100px;
+    // animation: c1 13s infinite ;
+    transition: 0.2s;
     &:hover {
         transform: scale(1.2);
     }
 }
 .Coin2 {
-    top: 170px;
-    right: 170px;
-    animation: c2 4s infinite ;
-    transition: transform 0.5s;    
+    // top: 170px;
+    // right: 170px;
+    animation: c2 12s infinite ;
+    transition: 0.2s;    
     &:hover{
         transform: scale(1.2);
     }
 }
 .Coin3 {
-    top: 210px;
-    right: 240px;
-    animation: c3 4s infinite ;
-    transition: transform 0.5s;    
+    // top: 210px;
+    // right: 240px;
+    animation: c3 10s infinite ;
+    transition: 0.2s;    
     &:hover{
         transform: scale(1.2);
     }
 }
 .Coin4 {
-    top: 140px;
-    right: 80px;
-    animation: c4 4s infinite ;
-    transition: transform 0.5s;    
+    // top: 140px;
+    // right: 80px;
+    animation: c4 15s infinite ;
+    transition: 0.2s;    
     &:hover{
         transform: scale(1.2);
     }
 }
 .Coin5 {
-    top: 100px;
-    right: 260px;
-    animation: c5 4s infinite ;
-    transition: transform 0.5s;    
+    // top: 100px;
+    // right: 260px;
+    animation: c5 10s infinite ;
+    transition: 0.2s;    
     &:hover{
         transform: scale(1.2);
     }
 }
 .Coin6 {
-    top: 60px;
-    right: 160px;
-    animation: c6 4s infinite ;
-    transition: transform 0.5s;    
+    // top: 60px;
+    // right: 160px;
+    animation: c6 8s infinite ;
+    transition: 0.2s;    
     &:hover{
         transform: scale(1.2);
     }
 }
 @keyframes c1 {
-    0%, 100% {top: 240px;}  
-    50% {top: 230px;}
+    0%, 100% {transform: translateY(0);}  
+    50% {transform: translateY(30px);}
 }
 @keyframes c2 {
-    0%, 100% {top: 170px;}  
-    50% {top: 150px;}
+    0%, 100% {transform: translateY(0);}  
+    50% {transform: translateY(-20px);}
 }
 @keyframes c3 {
-    0%, 100% {top: 210px;}  
-    50% {top: 200px;}
+    0%, 100% {transform: translateY(0);}  
+    50% {transform: translateY(-10px);}
 }
 @keyframes c4 {
-    0%, 100% {top: 140px;}  
-    50% {top: 150px;}
+    0%, 100% {transform: translateY(0)}  
+    50% {transform: translateY(10px);}
 }
 @keyframes c5 {
-    0%, 100% {top: 100px;}  
-    50% {top: 120px;}
+    0%, 100% {transform: translateY(0);}  
+    50% {transform: translateY(10px);}
 }
 @keyframes c6 {
-    0%, 100% {top: 60px;}  
-    50% {top: 70px;}
+    0%, 100% {transform: translateY(0);}  
+    50% {transform: translateY(5px);}
 }
 
 

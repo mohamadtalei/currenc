@@ -8,7 +8,7 @@ const Navbar = () => {
     useEffect(() => {
         window.onscroll = function () { scrollFunction() };
         function scrollFunction() {
-            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
                 setNavCollapse(true)
             } else {
                 setNavCollapse(false)
