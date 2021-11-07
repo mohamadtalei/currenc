@@ -24,27 +24,27 @@ const Header = () => {
     setCoinPosition({
       coin1: {
         top: 240 - (y / 30),
-        right: 100 - (x / 35)
+        right: 40 - (x / 35)
       },
       coin2: {
         top: 170 - (y / 10),
-        right: 170 - (x / 30)
+        right: 100 - (x / 30)
       },
       coin3: {
         top: 210 - (y / 20),
-        right: 240 - (x / 40)
+        right: 200 - (x / 40)
       },
       coin4: {
         top: 140 - (y / 15),
-        right: 80 - (x / 60)
+        right: 10 - (x / 60)
       },
       coin5: {
         top: 100 - (y / 20),
-        right: 260 - (x / 30)
+        right: 220 - (x / 30)
       },
       coin6: {
         top: 60 - (y / 18),
-        right: 160 - (x / 20)
+        right: 120 - (x / 20)
       },
     })
   }, [x, y])
@@ -56,12 +56,14 @@ const Header = () => {
         </div>
 
         <div className={styles.coinsContainer}>
-          <span className={styles.Coin1} style={{ right: coinPositions.coin1.right + "px", top: coinPositions.coin1.top + "px" }}> <Coin1 /> </span>
-          <span className={styles.Coin2} style={{ right: coinPositions.coin2.right + "px", top: coinPositions.coin2.top + "px" }}> <Coin2 /> </span>
-          <span className={styles.Coin3} style={{ right: coinPositions.coin3.right + "px", top: coinPositions.coin3.top + "px" }}> <Coin3 /> </span>
-          <span className={styles.Coin4} style={{ right: coinPositions.coin4.right + "px", top: coinPositions.coin4.top + "px" }}> <Coin4 /> </span>
-          <span className={styles.Coin5} style={{ right: coinPositions.coin5.right + "px", top: coinPositions.coin5.top + "px" }}> <Coin5 /> </span>
-          <span className={styles.Coin6} style={{ right: coinPositions.coin6.right + "px", top: coinPositions.coin6.top + "px" }}> <Coin6 /> </span>
+          <div className={styles.coins}>
+            <span className={styles.Coin1} style={{ right: coinPositions.coin1.right + "px", top: coinPositions.coin1.top + "px" }}> <Coin1 /> </span>
+            <span className={styles.Coin2} style={{ right: coinPositions.coin2.right + "px", top: coinPositions.coin2.top + "px" }}> <Coin2 /> </span>
+            <span className={styles.Coin3} style={{ right: coinPositions.coin3.right + "px", top: coinPositions.coin3.top + "px" }}> <Coin3 /> </span>
+            <span className={styles.Coin4} style={{ right: coinPositions.coin4.right + "px", top: coinPositions.coin4.top + "px" }}> <Coin4 /> </span>
+            <span className={styles.Coin5} style={{ right: coinPositions.coin5.right + "px", top: coinPositions.coin5.top + "px" }}> <Coin5 /> </span>
+            <span className={styles.Coin6} style={{ right: coinPositions.coin6.right + "px", top: coinPositions.coin6.top + "px" }}> <Coin6 /> </span>
+          </div>
         </div>
 
       </div>
