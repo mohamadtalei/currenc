@@ -9,14 +9,11 @@ import { useEffect, useState } from "react";
 import { positions } from "./coinPositions";
 
 const Header = () => {
-  const headerHeight = 350;
-  const [headerWidth, setHeaderWidth] = useState(window.innerWidth)
   const [x, setX] = useState(0)
   const [y, setY] = useState(0)
   const [zeroPoint, setZeroPoint] = useState({ x: 0, y: 0 })
   const [coinPositions, setCoinPosition] = useState(positions)
   const mousemoving = (event) => {
-    // console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`);
     setX(event.clientX - zeroPoint.x);
     setY(zeroPoint.y - event.clientY);
   }
@@ -24,10 +21,6 @@ const Header = () => {
     setCoinPosition(positions)
   }
   useEffect(() => {
-    window.addEventListener("resize", (e) => { setHeaderWidth(window.innerWidth) });
-  }, [])
-  useEffect(() => {
-    console.log("x:" + x + " y:" + y);
     setCoinPosition({
       coin1: {
         top: 240 - (y / 30),

@@ -44,60 +44,34 @@
 }
 .coinsContainer span {
     position: absolute;
+    transition: 0.8s ease-out;
+    &:hover{
+        transform: scale(1.2);
+    }
 }
 .Coin1 {
-    // top: 240px;
-    // right: 100px;
-    // animation: c1 13s infinite ;
-    transition: 0.2s;
-    &:hover {
-        transform: scale(1.2);
-    }
+    animation: c1 13s infinite ;
+
 }
-.Coin2 {
-    // top: 170px;
-    // right: 170px;
+.Coin2 { 
     animation: c2 12s infinite ;
-    transition: 0.2s;    
-    &:hover{
-        transform: scale(1.2);
-    }
+
 }
 .Coin3 {
-    // top: 210px;
-    // right: 240px;
     animation: c3 10s infinite ;
-    transition: 0.2s;    
-    &:hover{
-        transform: scale(1.2);
-    }
+
 }
 .Coin4 {
-    // top: 140px;
-    // right: 80px;
     animation: c4 15s infinite ;
-    transition: 0.2s;    
-    &:hover{
-        transform: scale(1.2);
-    }
+
 }
 .Coin5 {
-    // top: 100px;
-    // right: 260px;
     animation: c5 10s infinite ;
-    transition: 0.2s;    
-    &:hover{
-        transform: scale(1.2);
-    }
+
 }
 .Coin6 {
-    // top: 60px;
-    // right: 160px;
     animation: c6 8s infinite ;
-    transition: 0.2s;    
-    &:hover{
-        transform: scale(1.2);
-    }
+
 }
 @keyframes c1 {
     0%, 100% {transform: translateY(0);}  

@@ -1,6 +1,53 @@
 @import "@fontsource/overlock-sc";
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100&display=swap');
 
+// side navbar
+.sideNav{
+    position: fixed;
+    width: 200px;
+    padding: 40px;
+    top: 0;
+    right: 0;
+    height: 100%;
+    backdrop-filter: blur(3px);
+    z-index: 1;
+    background-color: rgba(46, 43, 43,0.9);
+    transition: 0.5s;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    .closeIcon{
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        svg{
+            width: 30px;
+            height: 30px;
+            color: #EEEEEE;
+        }
+    }
+    .sideNavItems{
+        align-self: center;
+        color: #EEEEEE;
+        margin: 20px;
+        font-size: 25px;
+        font-family: "Overpass";
+        display: block;
+        width: 200px;
+        text-align: center;
+        transition: text-shadow 0.25s;
+        &:hover{
+            cursor: pointer;
+            text-shadow: 0px 0px 13px rgba(255,255,255,0.64);
+        }
+    }
+}
+.hidden{
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+// navbar
 .container{
     height: 150px;
     background: linear-gradient(0deg, rgba(236, 157, 157, 0.16) 0%, rgba(198,198,198,0.02) 100%);
@@ -49,6 +96,7 @@
     margin-bottom: 20px;
     margin-right: 100px;
     transition: 0.5s;
+    align-items: center;
     a{
         transition: color 0.5s;
         margin: 5px;
@@ -58,6 +106,18 @@
         color: white;
         font-weight: 500;
         transition: 0.5s;
+    }
+    .sideMenuButton{
+        display: none;
+        align-self:center;
+        margin-bottom: 10px;
+        svg{
+            height: 40px;
+            width: 40px;
+            path{
+                fill: white;
+            }
+        }
     }
 }
 // hover animatoin
@@ -124,5 +184,45 @@
         }
     }
 }
+.navItemsContainer{
+    .collapsedSideButtonMenu{
+        display: none;
+        margin: 10px;
+        svg{
+            height: 30px;
+            width: 30px;
+            path{
+                fill: black;
+            }   
+        }
+    }
+}
+// media queries
+@media only screen and (max-width: 1000px) {
+    .navItemsContainer{
+        margin-right: 0;
+    }
+}
+@media only screen and (max-width: 880px) {
+    .navbar{
+        margin: 0 20px;
+        .logo{
+            font-size: 35px;
+            svg{
+                height: 40px;
+                width: 55px;
+            }
+        }
+    }
+    .navItemsContainer{
+        a{
+            display: none;
+        }
+        .sideMenuButton{
+            display: block;
+        }
+    }
+}
+
 
 
