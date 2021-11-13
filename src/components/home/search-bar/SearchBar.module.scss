@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.container{
+    background-color: #FDFDFD;
+    display: inline-flex;
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 4px 5px 61px -5px rgba(0,0,0,0.25);
+    align-items: center;
+    padding-left: 15px;
+}
+.searchIcon{
+    font-size: 1.3rem;
+    position: relative;
+    top: 3px;
+    transition: color 0.2s;
+    &:hover{
+        color: #267EDF;
+        cursor: pointer;
+    }
+}
+.input{
+    border: none;
+    padding-left: 10px;
+    width: 200px;
+    font-size: 1.3rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    &::placeholder{
+        color: #7C7C7C;
+    }
+    &:focus{
+        outline: none;
+    }
+}
