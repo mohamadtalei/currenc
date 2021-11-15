@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.container{
+    display: inline-flex;
+    align-items: center;
+}
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #ded7e0 #ffffff;
+  }
+*::-webkit-scrollbar {
+    width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #ded7e0;
+    border-radius: 10px;
+    border: 4px solid #ded7e0;
+}
+.selector{
+    width: 232.8px;
+    border-radius: 50px;
+    background-color: #FDFDFD;
+    align-self: stretch;
+    box-shadow: 4px 5px 61px -5px rgba(0,0,0,0.25);
+    padding: 10px 10px 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    .space{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #267EDF;
+        height: 23.8px;
+        opacity: 0;
+        visibility: hidden;
+        z-index: -1;
+        transition: 0.25s;
+    }
+    .openedSpace{
+        opacity: 1;
+        visibility: visible;
+    }
+    .base{
+        font-family: 'Roboto', sans-serif;
+        font-weight: 900;
+    }
+    .icon{
+        svg{
+            position: relative;
+            top: 2px;
+            color: #267EDF;
+            font-size: 1.1rem;
+            transform: rotateZ(0deg);
+            transition: transform 0.2s;
+        }
+    }
+    .transformedArrow{
+        svg{
+            transform: rotateZ(180deg);
+        }
+    }
+}
+.text{
+    font-size: 1.3rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-right: 10px;
+}
+.options{
+    position: absolute;
+    height: 0;
+    transition: 0.25s;
+    top: 100%;
+    left: 0;
+    background-color: #267EDF;
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+    overflow-y: hidden;
+    opacity: 0;
+    visibility: hidden;
+    .itemContainer{
+
+        .item{
+            padding: 10px;
+            margin: 0 20px;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            font-weight: 900;
+            border-top: 1px white solid;
+            &:first-child{
+                border: none;
+            }
+        }
+    }
+}
+
+.opened{
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    height: 200px;
+    
+    .itemContainer{
+        height: 100%;
+        overflow-y: auto;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .text{
+        font-size: 1rem;
+    }
+    .selector{
+        width: 180px;
+    }
+}

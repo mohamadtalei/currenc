@@ -6,8 +6,10 @@ import SearchBar from './search-bar/SearchBar';
 const Home = () => {
     return (
         <div className={styles.container}>
-            <SearchBar />
-            <BaseSelector />
+            <div className={styles.topDiv}>
+                <SearchBar />
+                <BaseSelector />
+            </div>
             <CurrencyTable />
 
         </div>

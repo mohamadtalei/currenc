@@ -14,22 +14,34 @@
     position: relative;
     top: 3px;
     transition: color 0.2s;
+    color: #267EDF;
     &:hover{
-        color: #267EDF;
         cursor: pointer;
     }
 }
 .input{
     border: none;
     padding-left: 10px;
+    letter-spacing: 2px;
     width: 200px;
     font-size: 1.3rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
+    color: #267EDF;
     &::placeholder{
         color: #7C7C7C;
     }
     &:focus{
         outline: none;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .container{
+        padding: 5px 10px 5px 15px;
+    }
+    .input{
+        width: 147.2px;
+        font-size: 1rem; 
     }
 }
