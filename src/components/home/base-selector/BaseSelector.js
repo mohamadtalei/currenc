@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Arrow from '../../../icons/arrow';
 import styles from './BaseSelector.module.scss';
 import cn from "classnames";
+import SelectorItem from './SelectorItem.js/SelectorItem';
 
-const BaseSelector = () => {
-    const tst = ["USD", "AUD", "CZK", "PHP", "RUB", "SEK", "USD", "AUD", "CZK", "PHP", "RUB", "SEK"]
+const BaseSelector = ({ currenciesNames, setBase, base }) => {
     const [dropDown, setDropDown] = useState(false);
     return (
         <div className={styles.container}>
@@ -15,7 +15,7 @@ const BaseSelector = () => {
                     [styles.openedSpace]: dropDown
                 })}></div>
                 <div className={styles.base}>
-                    EUR
+                    {base}
                 </div>
                 <span className={cn({
                     [styles.icon]: true,
@@ -28,9 +28,11 @@ const BaseSelector = () => {
                     [styles.opened]: dropDown
                 })}>
                     <div className={styles.itemContainer}>
-                        {tst.map((o) =>
-                            <div className={styles.item}>{o}</div>
-                        )}
+                        {
+                            Object.keys(currenciesNames).filter(c => c != base).map((c) =>
+                                <SelectorItem symbol={c} setBase={setBase} />
+                            )
+                        }
                     </div>
                 </div>
             </div>
