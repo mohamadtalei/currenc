@@ -3,6 +3,7 @@
 
 // side navbar
 .sideNav{
+    visibility: visible;
     position: fixed;
     width: 200px;
     padding: 40px;
@@ -23,19 +24,20 @@
         svg{
             width: 30px;
             height: 30px;
-            color: #EEEEEE;
+            transition: color 0.25s;
+            color: var(--primary);
         }
     }
     .sideNavItems{
         align-self: center;
-        color: #EEEEEE;
+        color: var(--primary);
         margin: 20px;
         font-size: 25px;
         font-family: "Overpass";
         display: block;
         width: 200px;
         text-align: center;
-        transition: text-shadow 0.25s;
+        transition: 0.25s;
         &:hover{
             cursor: pointer;
             text-shadow: 0px 0px 13px rgba(255,255,255,0.64);
@@ -46,6 +48,16 @@
     width: 0;
     padding-left: 0;
     padding-right: 0;
+    visibility: hidden;
+    .sideThemeToggler{
+        right: -100px;
+    }
+}
+.sideThemeToggler{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: 0.5s;
 }
 // navbar
 .container{
@@ -72,7 +84,7 @@
     font-size: 50px;
     line-height: 61px;
     letter-spacing: 0.15em;
-    color: #FFFFFF;
+    color: white;
     display: flex;
     align-items: center;
     margin-bottom: 30px;
@@ -103,7 +115,7 @@
         padding: 5px 10px;
         font-family: "Overpass";
         font-size: 24px;
-        color: white;
+        color: White;
         font-weight: 500;
         transition: 0.5s;
     }
@@ -115,7 +127,7 @@
             height: 40px;
             width: 40px;
             path{
-                fill: white;
+                fill: var(--primary);
             }
         }
     }
@@ -151,7 +163,7 @@
 // collapsed styles
 .collapsedContainer{
     height: 70px;
-    background: #EEEEEE;
+    background: var(--primary);
     box-shadow: 4px 5px 61px -5px rgba(0,0,0,0.25);
 }
 .collapsedNavbar{
@@ -160,7 +172,8 @@
 }
 .collapsedLogo{
     margin: 0;
-    color: rgb(37, 34, 34);
+    transform: color 0.25s;
+    color: var(--font-color);
     border: none;
     font-size: 40px;
     margin-left: 30px;
@@ -168,10 +181,12 @@
         height: 40px;
         width: 45px;
         path{
-          fill:#EEEEEE;  
+            transition: fill 0.25s;
+            fill:var(--primary);  
         }
         rect{
-            fill:rgb(37, 34, 34);
+            transition: fill 0.25s;
+            fill:var(--font-color);
         }
         
     }
@@ -179,9 +194,9 @@
 .collapsedNavItemsContainer{
     margin: 0 40px 0 0;
     .collapsedNavItems{
-        color: rgb(37, 34, 34);
+        color: var(--font-color);
         &::after{
-            background: rgb(37, 34, 34);
+            background: var(--font-color);
         }
     }
 }
@@ -198,6 +213,19 @@
         }
     }
 }
+//theme toggler
+.ThemeToggler{
+    opacity: 0;
+    visibility: hidden;
+    position: relative;
+    transition: 0.5s;
+    left: 200px;
+}
+.collapsedThemeToggler{
+    visibility: visible;
+    opacity: 1;
+    left: 0;
+}
 // media queries
 @media only screen and (max-width: 1000px) {
     .navItemsContainer{
@@ -205,6 +233,9 @@
     }
 }
 @media only screen and (max-width: 880px) {
+    .ThemeToggler{
+        display: none;
+    }
     .navbar{
         margin: 0 20px;
         .logo{

@@ -4,6 +4,7 @@ import Logo from '../../icons/logo';
 import cn from "classnames";
 import SideMenuIcon from '../../icons/sideMenu';
 import CloseIcon from '../../icons/close';
+import ThemeToggler from './theme-toggler/ThemeToggler';
 
 const Navbar = () => {
     const [navCollapse, setNavCollapse] = useState(false);
@@ -56,6 +57,12 @@ const Navbar = () => {
                             [styles.navItems]: true,
                             [styles.collapsedNavItems]: navCollapse
                         })}>ABOUT US</a>
+                        <div className={cn({
+                            [styles.ThemeToggler]: true,
+                            [styles.collapsedThemeToggler]: navCollapse
+                        })}>
+                            <ThemeToggler />
+                        </div>
                     </div>
                 </div>
             </div >
@@ -64,6 +71,9 @@ const Navbar = () => {
                 [styles.hidden]: !sideBar,
             })}>
                 <span className={styles.closeIcon} onClick={() => { setSideBar(false) }}><CloseIcon /></span>
+                <div className={styles.sideThemeToggler}>
+                    <ThemeToggler />
+                </div>
                 <a className={styles.sideNavItems}>HOME</a>
                 <a className={styles.sideNavItems}>SAVED</a>
                 <a className={styles.sideNavItems}>ABOUT US</a>

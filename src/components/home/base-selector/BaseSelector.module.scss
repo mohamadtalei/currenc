@@ -1,3 +1,4 @@
+@use "../../../index.css";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 .container{
@@ -24,7 +25,8 @@
 .selector{
     width: 232.8px;
     border-radius: 50px;
-    background-color: #FDFDFD;
+    transition: 0.25s;
+    background-color: var(--secondary);
     align-self: stretch;
     box-shadow: 4px 5px 61px -5px rgba(0,0,0,0.25);
     padding: 10px 10px 10px 15px;
@@ -37,7 +39,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #267EDF;
+        background-color: var(--light-blue);
         height: 23.8px;
         opacity: 0;
         visibility: hidden;
@@ -50,13 +52,15 @@
     }
     .base{
         font-family: 'Roboto', sans-serif;
+        transform: color 0.25s;
+        color: var(--secondary-font-color);
         font-weight: 900;
     }
     .icon{
         svg{
             position: relative;
             top: 2px;
-            color: #267EDF;
+            color: var(--light-blue);
             font-size: 1.1rem;
             transform: rotateZ(0deg);
             transition: transform 0.2s;
@@ -72,6 +76,7 @@
     font-size: 1.3rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
+    color: var(--font-color);
     letter-spacing: 2px;
     margin-right: 10px;
 }
@@ -81,7 +86,7 @@
     transition: 0.25s;
     top: 100%;
     left: 0;
-    background-color: #267EDF;
+    background-color: var(--light-blue);
     width: 100%;
     border-radius: 0 0 20px 20px;
     overflow-y: hidden;

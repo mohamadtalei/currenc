@@ -1,4 +1,16 @@
+:root{
+    --light-blue:#267EDF;
+    --primary:#EEEEEE;
+    --secondary: #FDFDFD;
+    --font-color: #252222;
+    --secondary-font-color: #3B3B3B;
+    --dark-bf: #2B2B2B;
+    --dark-box-bg: #3a3a3a;
+    --green: green;
+    --red: red;
+}
 body{
     margin: 0;
-    background-color: #EEEEEE;
+    background-color: var(--primary);
+    transition: background-color 0.25s;
 }

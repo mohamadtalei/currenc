@@ -1,7 +1,11 @@
+
+@use '../../../index.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
+
 .container{
-    background-color: #FDFDFD;
+    transition: background-color 0.25s;
+    background-color: var(--secondary);
     display: inline-flex;
     padding: 10px;
     border-radius: 50px;
@@ -14,7 +18,7 @@
     position: relative;
     top: 3px;
     transition: color 0.2s;
-    color: #267EDF;
+    color: var(--light-blue);
     &:hover{
         cursor: pointer;
     }
@@ -27,9 +31,11 @@
     font-size: 1.3rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
-    color: #267EDF;
+    transition: 0.25s;
+    background-color: var(--secondary);
+    color: var(--light-blue);
     &::placeholder{
-        color: #7C7C7C;
+        color: var(--secondary-font-color);
     }
     &:focus{
         outline: none;

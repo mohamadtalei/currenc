@@ -1,0 +1,61 @@
+.container{
+    height: 26px;
+    width: 45px;
+    background-color: #3a3a3a;
+    border-radius: 30px;
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.4);
+    position: relative;
+    display: inline-block;
+    transition: background-color 0.25s;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.circle{
+    background-color: #EEEEEE;
+    display: inline-block;
+    box-shadow: 0 0 3px rgba(0,0,0,0.4);
+    position: absolute;
+    left: 0;
+    right: 19px;
+    transition: 0.2s;
+    height: 18px;
+    width: 18px;
+    border-radius: 30px;
+    margin: 4px;
+}
+.toggledCircle{
+    right: 0;
+    left: 19px;
+    background-color: #3a3a3a;
+}
+.toggled{
+    background-color: #EEEEEE;
+}
+@mixin icon {
+    position: absolute;
+    right: 0;
+    left: 2px;
+    top: 1px;
+    opacity: 1;
+    transition: opacity 0.2s;
+    svg{
+        font-weight: 100;
+        font-size: small;
+    }
+}
+.sunIcon{
+    @include icon;
+    svg{
+        color: #3a3a3a
+    }
+}
+.moonIcon{
+    @include icon;
+    svg{
+        color: #EEEEEE;
+    }
+}
+.hidden{
+    opacity: 0;
+}
