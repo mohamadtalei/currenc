@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 
 
 const ThemeToggler = () => {
-    const [lightTheme, setLightTheme] = useState(true)
+    const [lightTheme, setLightTheme] = useState(true);
     const dispatch = useDispatch()
     const toggleHandler = () => {
         setLightTheme(!lightTheme)

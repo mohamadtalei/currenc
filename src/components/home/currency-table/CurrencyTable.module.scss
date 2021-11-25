@@ -1,0 +1,16 @@
+@use "../../../index.css";
+
+.container{
+    margin: 75px 0;
+    box-shadow: 4px 5px 61px -5px rgba(0,0,0,0.25);
+    transition: background-color 0.25s;
+    border-radius: 30px;
+    background-color: var(--secondary);
+    .currnecyBlock{
+        margin: 0 80px;
+        border-bottom: 2px solid var(--light-blue);
+        &:last-child{
+            border: none;
+        }
+    }
+}

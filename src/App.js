@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const theme = useSelector((state) => state.themeReducer);
-  const [primary, setprimary] = useState()
-  const [secondary, setSecondary] = useState()
   useEffect(() => {
     if (theme === "light") {
       document.documentElement.style.setProperty('--primary', "#EEEEEE");

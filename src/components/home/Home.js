@@ -21,7 +21,6 @@ const Home = () => {
         usefetch(`https://api.frankfurter.app/latest?from=${base}`, { json: true })
             .then(response => {
                 setLatest(response.body);
-                console.log(response.body);
             }).catch(e => {
                 console.log(e);
             })
@@ -34,9 +33,7 @@ const Home = () => {
                     <SearchBar />
                     <BaseSelector base={base} setBase={setBase} currenciesNames={currenciesNames} />
                 </div>}
-
-
-            <CurrencyTable currenciesNames={currenciesNames} latest={latest} />
+            <CurrencyTable currenciesNames={currenciesNames} latest={latest} base={base} />
 
         </div>
     );
