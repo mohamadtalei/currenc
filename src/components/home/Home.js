@@ -13,14 +13,18 @@ const Home = () => {
         usefetch(`https://api.frankfurter.app/currencies`, { json: true })
             .then(response => {
                 setCurrenciesNames(response.body);
-            });
+            }).catch(e => {
+                console.log(e)
+            })
     }, [])
     useEffect(() => {  //request for latest prices
         usefetch(`https://api.frankfurter.app/latest?from=${base}`, { json: true })
             .then(response => {
                 setLatest(response.body);
                 console.log(response.body);
-            });
+            }).catch(e => {
+                console.log(e);
+            })
     }, [base])
     return (
         <div className={styles.container}>

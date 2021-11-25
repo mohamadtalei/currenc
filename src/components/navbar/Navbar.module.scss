@@ -24,13 +24,16 @@
         svg{
             width: 30px;
             height: 30px;
-            transition: color 0.25s;
-            color: var(--primary);
+            color: rgb(200, 200, 200);
+            path{
+
+                fill: white;
+            }
         }
     }
     .sideNavItems{
         align-self: center;
-        color: var(--primary);
+        color: rgb(200,200,200);
         margin: 20px;
         font-size: 25px;
         font-family: "Overpass";
@@ -127,7 +130,7 @@
             height: 40px;
             width: 40px;
             path{
-                fill: var(--primary);
+                fill: white;
             }
         }
     }
@@ -208,7 +211,7 @@
             height: 30px;
             width: 30px;
             path{
-                fill: black;
+                fill: var(--font-color);
             }   
         }
     }
