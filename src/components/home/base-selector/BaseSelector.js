@@ -8,14 +8,14 @@ const BaseSelector = ({ currenciesNames, setBase, base }) => {
     const [dropDown, setDropDown] = useState(false);
     return (
         <div className={styles.container}>
-            <span className={styles.text}>Base : </span>
+            {/* <span className={styles.text}>Base : </span> */}
             <div className={styles.selector} onClick={() => { setDropDown(!dropDown) }}>
                 <div className={cn({
                     [styles.space]: true,
                     [styles.openedSpace]: dropDown
                 })}></div>
                 <div className={styles.base}>
-                    {base}
+                    Base : {base}
                 </div>
                 <span className={cn({
                     [styles.icon]: true,
