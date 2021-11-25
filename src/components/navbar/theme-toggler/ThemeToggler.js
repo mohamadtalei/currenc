@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './ThemeToggler.module.scss'
 import cn from 'classnames'
 import Sun from '../../../icons/sun.js'
 import Moon from '../../../icons/moon.js'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const ThemeToggler = () => {
-    const [lightTheme, setLightTheme] = useState(true);
+    const theme = useSelector((state) => state.themeReducer);
+    const [lightTheme, setLightTheme] = useState();
     const dispatch = useDispatch()
     const toggleHandler = () => {
         setLightTheme(!lightTheme)
@@ -18,6 +19,15 @@ const ThemeToggler = () => {
             dispatch({ type: "changeTheme", payload: "light" });
         }
     }
+    useEffect(() => {
+        if (theme) {
+            if (theme === "light") {
+                setLightTheme(true)
+            } else {
+                setLightTheme(false)
+            }
+        }
+    }, [theme])
     return (
         <div onClick={toggleHandler} className={cn({
             [styles.container]: true,
