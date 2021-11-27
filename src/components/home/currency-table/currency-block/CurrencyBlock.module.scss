@@ -1,6 +1,5 @@
 @use "../../../../index.css";
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100&family=Dosis:wght@300&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Outfit:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100&family=Pavanam&family=Dosis:wght@300&display=swap');
 
 .conteiner{
     display: flex;
@@ -42,19 +41,43 @@
     .fullNameContainer{
         padding: 0 20px;
         .fullName{
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: bold;
             font-family: "Overpass";
             color: var(--font-color);
             margin-top: 0;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             display: inline-block;
         }
     }
 }
 .priceContainer{
     width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .price{
+        font-family: 'Pavanam', sans-serif;
+        font-size: 24px;
+        color: var(--light-blue);
+    }
 }
 .iconsContainer{
     width: 30%;
+    margin-bottom: 17.6px;
+    display: flex;
+    align-items: flex-end;
+    .icons{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        span{
+            svg{
+                font-size: 1.2rem;
+                fill: var(--font-color);
+                color: var(--font-color);
+            }
+        }
+    }
 }

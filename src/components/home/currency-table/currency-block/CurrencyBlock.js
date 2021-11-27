@@ -1,13 +1,16 @@
 import styles from './CurrencyBlock.module.scss'
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
+import Switch from '../../../../icons/switch.js'
+import Star from '../../../../icons/star.js'
+import Chart from '../../../../icons/charts.js'
 
 const CurrencyBlock = ({ symbol, name, yesterdayRate, base, rate }) => {
 
     const [percentage, setPercentage] = useState();
     useEffect(() => {
-        setPercentage(("" + ((rate * 100 / yesterdayRate) - 100)).slice(0, 6));
-    }, [base])
+        setPercentage(("" + (((rate / yesterdayRate) - 1)) * 100).slice(0, 6));
+    }, [base, rate, yesterdayRate])
     return (
         <div className={styles.container}>
             <div className={styles.description}>
@@ -23,8 +26,16 @@ const CurrencyBlock = ({ symbol, name, yesterdayRate, base, rate }) => {
                         <p className={styles.fullName}>{name}</p>
                     </div>
                 </div>
-                <div className={styles.priceContainer}></div>
-                <div className={styles.iconsContainer}></div>
+                <div className={styles.priceContainer}>
+                    <p className={styles.price}>{rate} {symbol}</p>
+                </div>
+                <div className={styles.iconsContainer}>
+                    <div className={styles.icons}>
+                        <span className={styles.switchIcon}><Switch /></span>
+                        <span className={styles.starIcon}><Star /></span>
+                        <span className={styles.chartIcon}><Chart /></span>
+                    </div>
+                </div>
             </div>
             <div className="convertor"></div>
         </div>

@@ -3,30 +3,37 @@ import CurrencyBlock from './currency-block/CurrencyBlock';
 import styles from './CurrencyTable.module.scss';
 import usefetch from 'use-fetch';
 
-const CurrencyTable = ({ currenciesNames, latest, base }) => {
+const CurrencyTable = ({ currenciesNames, latest, base, date }) => {
     const [rates, setRates] = useState();
     const [yesterdayRates, setYesterdayRates] = useState();
+    const [pending, setPending] = useState();
+    const getYesterday = (date) => {
+        const d = Date.parse(date);
+        const y = new Date(d - 86400000);
+        return y.getFullYear() + "-" + y.getMonth() + "-" + y.getDate();
+    }
     useEffect(() => {
         if (latest && latest.rates) {
             setRates(latest.rates)
         }
     }, [latest])
-
-    const d = new Date();
-    const date = d.toISOString().slice(0, 9);
-    const day = parseInt(d.toISOString()[9]) - 1;
     useEffect(() => {
-        usefetch(`https://api.frankfurter.app/${date + day}?from=${base}`, { json: true })
+        setPending(true);
+        const yesterDay = getYesterday(date);
+        usefetch(`https://api.frankfurter.app/${yesterDay}?from=${base}`, { json: true })
             .then(response => {
                 setYesterdayRates(response.body.rates);
-                console.log(response.body.rates);
+                setPending(false);
             }).catch(e => {
                 console.log(e);
             })
-    }, [base])
+    }, [base, date])
     return (
         <>
-            {rates && yesterdayRates && currenciesNames &&
+            {pending &&
+                <div>loading</div>
+            }
+            {rates && yesterdayRates && currenciesNames && !pending &&
                 <div div className={styles.container}>
                     {Object.keys(rates).map(c =>
                         <div className={styles.currnecyBlock}>

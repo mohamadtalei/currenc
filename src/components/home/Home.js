@@ -9,6 +9,7 @@ const Home = () => {
     const [latest, setLatest] = useState();
     const [base, setBase] = useState("EUR");
     const [currenciesNames, setCurrenciesNames] = useState("empty");
+    const [date, setDate] = useState();
     useEffect(() => {  //request for currency symnols
         usefetch(`https://api.frankfurter.app/currencies`, { json: true })
             .then(response => {
@@ -21,6 +22,7 @@ const Home = () => {
         usefetch(`https://api.frankfurter.app/latest?from=${base}`, { json: true })
             .then(response => {
                 setLatest(response.body);
+                setDate(response.body.date);
             }).catch(e => {
                 console.log(e);
             })
@@ -33,7 +35,7 @@ const Home = () => {
                     <SearchBar />
                     <BaseSelector base={base} setBase={setBase} currenciesNames={currenciesNames} />
                 </div>}
-            <CurrencyTable currenciesNames={currenciesNames} latest={latest} base={base} />
+            <CurrencyTable currenciesNames={currenciesNames} latest={latest} base={base} date={date} />
 
         </div>
     );

@@ -2,8 +2,8 @@ import Navbar from './components/navbar/Navbar';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import { useSelector } from 'react-redux';
-import ThemeToggler from './components/navbar/theme-toggler/ThemeToggler';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   const theme = useSelector((state) => state.themeReducer);
@@ -22,20 +22,15 @@ function App() {
     }
   }, [theme])
   return (
-    <div className="App">
-      <Navbar />
-      <Header />
-      <Home />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
