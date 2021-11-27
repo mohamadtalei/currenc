@@ -1,9 +1,9 @@
-import Navbar from './components/navbar/Navbar';
-import Header from './components/header/Header';
 import Home from './components/home/Home';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CurrencyPage from './components/currency-page/CurrencyPage';
+import Layout from './components/layout/Layout';
 
 function App() {
   const theme = useSelector((state) => state.themeReducer);
@@ -24,10 +24,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
-        <Header />
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<Layout onMainPage={true}><Home /></Layout>} />
+          <Route path="/:symbol" element={<Layout onMainPage={false}><CurrencyPage /></Layout>} />
         </Routes>
       </div>
     </Router>

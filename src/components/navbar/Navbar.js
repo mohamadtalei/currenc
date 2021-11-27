@@ -5,12 +5,18 @@ import cn from "classnames";
 import SideMenuIcon from '../../icons/sideMenu';
 import CloseIcon from '../../icons/close';
 import ThemeToggler from './theme-toggler/ThemeToggler';
+import { useParams } from 'react-router';
 
-const Navbar = () => {
-    const [navCollapse, setNavCollapse] = useState(false);
+const Navbar = ({ onMainPage }) => {
+    const [navCollapse, setNavCollapse] = useState();
     const [sideBar, setSideBar] = useState(false);
     useEffect(() => {
-        window.onscroll = function () { scrollFunction() };
+        if (onMainPage) {
+            window.onscroll = function () { scrollFunction() };
+        }
+        else {
+            setNavCollapse(true)
+        }
         function scrollFunction() {
             if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
                 setNavCollapse(true)
@@ -18,7 +24,7 @@ const Navbar = () => {
                 setNavCollapse(false)
             }
         }
-    }, [])
+    }, [onMainPage])
     return (
         <>
             <div className={cn({
