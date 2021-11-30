@@ -4,39 +4,77 @@ import styles from './Home.module.scss';
 import SearchBar from './search-bar/SearchBar';
 import usefetch from 'use-fetch'
 import { useEffect, useState } from 'react';
+import Loading from './loading/Loading.js';
 
 const Home = () => {
     const [latest, setLatest] = useState();
     const [base, setBase] = useState("EUR");
     const [currenciesNames, setCurrenciesNames] = useState("empty");
     const [date, setDate] = useState();
+    const [pending,setPending] = useState();
+    const [pending2,setPending2] = useState();
+    const [pending3,setPending3] = useState();
+
     useEffect(() => {  //request for currency symnols
+        setPending2(true);
         usefetch(`https://api.frankfurter.app/currencies`, { json: true })
             .then(response => {
                 setCurrenciesNames(response.body);
+                setPending2(false);
             }).catch(e => {
                 console.log(e)
             })
     }, [])
     useEffect(() => {  //request for latest prices
+        setPending3(true);
         usefetch(`https://api.frankfurter.app/latest?from=${base}`, { json: true })
             .then(response => {
                 setLatest(response.body);
                 setDate(response.body.date);
+                setPending3(false);
             }).catch(e => {
                 console.log(e);
             })
     }, [base])
+
+    const [rates, setRates] = useState();
+    const [yesterdayRates, setYesterdayRates] = useState();
+    const getYesterday = (date) => {
+        const d = Date.parse(date);
+        const y = new Date(d - 86400000);
+        return y.getFullYear() + "-" + y.getMonth() + "-" + y.getDate();
+    }
+    
+    useEffect(() => {
+        if (latest && latest.rates) {
+            setRates(latest.rates)
+        }
+    }, [latest])
+
+    useEffect(() => {
+        console.log("i love amirali");
+        setPending(true);
+        const yesterDay = getYesterday(date);
+        usefetch(`https://api.frankfurter.app/${yesterDay}?from=${base}`, { json: true })
+            .then(response => {
+                setYesterdayRates(response.body.rates);
+                setPending(false);
+            }).catch(e => {
+                console.log(e);
+            })
+    }, [base, date])
+
     return (
         <div className={styles.container}>
 
-            {currenciesNames &&
+            { (pending || pending2 || pending3) && <Loading />}
+            { !(pending || pending2 || pending3) && <>
                 <div className={styles.topDiv}>
                     <SearchBar />
                     <BaseSelector base={base} setBase={setBase} currenciesNames={currenciesNames} />
-                </div>}
-            <CurrencyTable currenciesNames={currenciesNames} latest={latest} base={base} date={date} />
-
+                </div> 
+            <CurrencyTable rates={rates} yesterdayRates={yesterdayRates} pending={pending} currenciesNames={currenciesNames} base={base} />
+        </> }
         </div>
     );
 }
