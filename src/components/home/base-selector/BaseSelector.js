@@ -30,8 +30,7 @@ const BaseSelector = ({ currenciesNames, setBase, base }) => {
                     <div className={styles.itemContainer}>
                         {
                             Object.keys(currenciesNames).filter(c => c != base).map((c) =>
-                                <SelectorItem symbol={c} setBase={setBase} />
-                            )
+                                <SelectorItem symbol={c} setBase={setBase} />)
                         }
                     </div>
                 </div>
