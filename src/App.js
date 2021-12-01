@@ -1,6 +1,6 @@
 import Home from './components/home/Home';
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CurrencyPage from './components/currency-page/CurrencyPage';
 import Layout from './components/layout/Layout';
@@ -21,12 +21,13 @@ function App() {
       document.documentElement.style.setProperty('--secondary-font-color', "#b8b8b8");
     }
   }, [theme])
+  const [gdate, setGdate] = useState()
   return (
     <Router>
       <div className="App">
         <Routes>
           <Route exact path="/" element={<Layout onMainPage={true}><Home /></Layout>} />
-          <Route path="/:symbol" element={<Layout onMainPage={false}><CurrencyPage /></Layout>} />
+          <Route path="/:symbol" element={<Layout onMainPage={false}><CurrencyPage gdate={gdate} /></Layout>} />
         </Routes>
       </div>
     </Router>

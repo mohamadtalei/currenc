@@ -10,10 +10,10 @@ const Home = () => {
     const [latest, setLatest] = useState();
     const [base, setBase] = useState("EUR");
     const [currenciesNames, setCurrenciesNames] = useState("empty");
-    const [date, setDate] = useState();
-    const [pending,setPending] = useState();
-    const [pending2,setPending2] = useState();
-    const [pending3,setPending3] = useState();
+    const [date, setDate] = useState()
+    const [pending, setPending] = useState();
+    const [pending2, setPending2] = useState();
+    const [pending3, setPending3] = useState();
 
     useEffect(() => {  //request for currency symnols
         setPending2(true);
@@ -40,19 +40,21 @@ const Home = () => {
     const [rates, setRates] = useState();
     const [yesterdayRates, setYesterdayRates] = useState();
     const getYesterday = (date) => {
-        const d = Date.parse(date);
-        const y = new Date(d - 86400000);
-        return y.getFullYear() + "-" + y.getMonth() + "-" + y.getDate();
+        const d = new Date(date);
+        d.setDate(d.getDate() - 1);
+        return (d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate()));
     }
-    
+
     useEffect(() => {
         if (latest && latest.rates) {
             setRates(latest.rates)
         }
     }, [latest])
+    // useEffect(() => {
+    //     console.log(pending, pending2, pending3);
+    // }, [pending, pending2, pending3])
 
     useEffect(() => {
-        console.log("i love amirali");
         setPending(true);
         const yesterDay = getYesterday(date);
         usefetch(`https://api.frankfurter.app/${yesterDay}?from=${base}`, { json: true })
@@ -67,14 +69,14 @@ const Home = () => {
     return (
         <div className={styles.container}>
 
-            { (pending || pending2 || pending3) && <Loading />}
-            { !(pending || pending2 || pending3) && <>
+            {(pending || pending2 || pending3) && <Loading />}
+            {!(pending || pending2 || pending3) && <>
                 <div className={styles.topDiv}>
                     <SearchBar />
                     <BaseSelector base={base} setBase={setBase} currenciesNames={currenciesNames} />
-                </div> 
-            <CurrencyTable rates={rates} yesterdayRates={yesterdayRates} pending={pending} currenciesNames={currenciesNames} base={base} />
-        </> }
+                </div>
+                <CurrencyTable rates={rates} yesterdayRates={yesterdayRates} pending={pending} currenciesNames={currenciesNames} base={base} />
+            </>}
         </div>
     );
 }
