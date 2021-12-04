@@ -145,7 +145,10 @@ body::-webkit-scrollbar-thumb {
         overflow-y: auto;
     }
 }
-
+.inside{
+    box-shadow: 3px 3px 14px 0px rgba(0,0,0,0.25)  inset;
+    background-color: var(--primary);
+}
 @media only screen and (max-width: 760px) {
     .text{
         font-size: 1rem;

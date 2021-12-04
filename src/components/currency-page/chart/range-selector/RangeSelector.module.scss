@@ -1,0 +1,26 @@
+@use '../../../../index.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.container{
+    display: flex;
+    justify-content: center;
+    div{
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 1.5rem;
+        border-radius: 20px;
+        padding: 3px 15px;
+        margin: 5px 12px;
+        transition: background-color 0.5s;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .range{
+        color: var(--font-color);
+    }
+    .selectedRange{
+        background-color: var(--light-blue);
+        color: var(--secondary);
+    }
+}

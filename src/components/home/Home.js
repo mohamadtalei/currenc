@@ -73,7 +73,7 @@ const Home = () => {
             {!(pending || pending2 || pending3) && <>
                 <div className={styles.topDiv}>
                     <SearchBar />
-                    <BaseSelector base={base} setBase={setBase} currenciesNames={currenciesNames} />
+                    <BaseSelector inside={false} base={base} setBase={setBase} currenciesNames={currenciesNames} />
                 </div>
                 <CurrencyTable rates={rates} yesterdayRates={yesterdayRates} pending={pending} currenciesNames={currenciesNames} base={base} />
             </>}

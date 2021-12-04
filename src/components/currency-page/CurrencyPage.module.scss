@@ -1,0 +1,70 @@
+@use '../../index.css';
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100&family=Pavanam&family=Dosis:wght@300&display=swap');
+.container{
+    padding: 5%;
+    padding-top: 170px;
+    .content{
+        transition: background-color 0.25s;
+        background-color: var(--secondary);
+        box-shadow: 4px 5px 61px -5px rgba(0,0,0,0.25);
+        border-radius: 25px;
+        padding: 10% 15%;
+    }
+}
+.topDiv{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.symbolContainer{
+    .symbol{
+        display: flex;
+        align-items: flex-end;
+        .s{
+            color: var(--light-blue);
+            font-family: "Overpass";
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .percentage{
+            font-family: 'Dosis';
+            font-weight: bold;
+            color: var(--green);
+            letter-spacing: 1px;
+            font-size: 1.5rem;
+            margin-left: 20px;
+        }
+        .negative{
+            color: var(--red);
+        }
+    }
+}
+.name{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: "Overpass";
+    color: var(--font-color);
+    margin-top: 0;
+    letter-spacing: 3px;
+    display: inline-block;
+}
+.baseSelectorContainer{
+    z-index: 2;
+}
+.bottomDiv{
+    margin-top: 100px;
+}
+.rateContainer{
+    text-align: center;
+    .rateP{
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 1.8rem;
+        .rate{
+            color: var(--light-blue);
+            font-size: 2.2rem;
+            font-weight: 400;
+        }
+    }
+}

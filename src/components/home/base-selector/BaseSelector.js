@@ -4,15 +4,18 @@ import styles from './BaseSelector.module.scss';
 import cn from "classnames";
 import SelectorItem from './SelectorItem.js/SelectorItem';
 
-const BaseSelector = ({ currenciesNames, setBase, base }) => {
+const BaseSelector = ({ currenciesNames, setBase, base, inside }) => {
     const [dropDown, setDropDown] = useState(false);
     return (
         <div className={styles.container}>
             {/* <span className={styles.text}>Base : </span> */}
-            <div className={styles.selector} onClick={() => { setDropDown(!dropDown) }}>
+            <div className={cn({
+                [styles.selector]: true,
+                [styles.inside]: inside
+            })} onClick={() => { setDropDown(!dropDown) }}>
                 <div className={cn({
                     [styles.space]: true,
-                    [styles.openedSpace]: dropDown
+                    [styles.openedSpace]: dropDown,
                 })}></div>
                 <div className={styles.base}>
                     Base : {base}
