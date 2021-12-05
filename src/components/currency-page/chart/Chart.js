@@ -51,7 +51,7 @@ const Chart = ({ symbol, base }) => {
                     var res = response.body.rates;
                     let data = []
                     Object.keys(res).map(r => {
-                        data.push({ name: r, uv: res[r][base], pv: 2400, amt: 2400 })
+                        data.push({ name: r, rate: res[r][base], pv: 2400, amt: 2400 })
                     })
                     setData(data)
                 }).catch(e => {
@@ -59,15 +59,12 @@ const Chart = ({ symbol, base }) => {
                 })
         }
     }, [startDate])
-    useEffect(() => {
-        console.log(data);
-    }, [data])
     return (
         <div className={styles.container}>
             <div className={styles.rangeSelector}><RangeSelector range={range} setRange={setRange} /></div>
             <div className={styles.chartContainer}>
                 <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                    <Line type="monotone" dataKey="uv" stroke="#267EDF" />
+                    <Line type="monotone" dataKey="rate" stroke="#267EDF" />
                     <CartesianGrid stroke="#ccc" strokeDasharray="2 2" />
                     <XAxis dataKey="name" />
                     <YAxis />

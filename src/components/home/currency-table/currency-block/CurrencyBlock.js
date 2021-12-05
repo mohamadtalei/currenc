@@ -4,9 +4,10 @@ import cn from 'classnames';
 import Switch from '../../../../icons/switch.js'
 import Star from '../../../../icons/star.js'
 import Chart from '../../../../icons/charts.js'
+import { useNavigate } from "react-router-dom";
 
 const CurrencyBlock = ({ symbol, name, yesterdayRate, base, rate }) => {
-
+    const navigate = useNavigate()
     const [percentage, setPercentage] = useState();
     useEffect(() => {
         setPercentage(("" + (((rate / yesterdayRate) - 1)) * 100).slice(0, 6));
@@ -16,7 +17,7 @@ const CurrencyBlock = ({ symbol, name, yesterdayRate, base, rate }) => {
             <div className={styles.description}>
                 <div className={styles.nameContainer}>
                     <div className={styles.symbolContainer}>
-                        <p className={styles.symbol}>{symbol}</p>
+                        <p onClick={() => navigate(`/${symbol}`)} className={styles.symbol}>{symbol}</p>
                         <p className={cn({
                             [styles.percentage]: true,
                             [styles.negative]: parseFloat(percentage) < 0

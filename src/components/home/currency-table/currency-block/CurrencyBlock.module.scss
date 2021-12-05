@@ -26,6 +26,9 @@
             font-weight: bold;
             margin: 0;
             display: inline-block;
+            &:hover{
+                cursor: pointer;
+            }
         }
         .percentage{
             font-family: 'Dosis';

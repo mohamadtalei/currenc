@@ -20,7 +20,7 @@ const CurrencyPage = ({ gdate }) => {
     }, [base, rate, yesterdayRate])
     useEffect(() => {
         const d = new Date();
-        d.setDate(d.getDate() - 1);
+        d.setDate(d.getDate() - 2);
         setDate((d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate())));
         d.setDate(d.getDate() - 1);
         setYesterday((d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate())));
@@ -44,8 +44,6 @@ const CurrencyPage = ({ gdate }) => {
                 })
         }
     }, [date, yesterday, base])
-    console.log(yesterday);
-    console.log(date);
     return (
         <div className={styles.container}>
             {currenciesName &&
