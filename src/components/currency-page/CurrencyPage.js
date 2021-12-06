@@ -6,7 +6,7 @@ import BaseSelector from '../home/base-selector/BaseSelector';
 import cn from 'classnames'
 import Chart from './chart/Chart';
 
-const CurrencyPage = ({ gdate }) => {
+const CurrencyPage = () => {
     const symbol = useParams().symbol;
     const [date, setDate] = useState()
     const [currenciesName, setCurrenciesName] = useState()
@@ -20,7 +20,7 @@ const CurrencyPage = ({ gdate }) => {
     }, [base, rate, yesterdayRate])
     useEffect(() => {
         const d = new Date();
-        d.setDate(d.getDate() - 2);
+        d.setDate(d.getDate() - 3);
         setDate((d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate())));
         d.setDate(d.getDate() - 1);
         setYesterday((d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate())));

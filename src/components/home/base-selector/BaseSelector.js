@@ -29,13 +29,14 @@ const BaseSelector = ({ currenciesNames, setBase, base, inside }) => {
                 <div className={cn({
                     [styles.options]: true,
                     [styles.opened]: dropDown
-                })}>
+                })}>{currenciesNames &&
                     <div className={styles.itemContainer}>
                         {
                             Object.keys(currenciesNames).filter(c => c != base).map((c) =>
                                 <SelectorItem symbol={c} setBase={setBase} />)
                         }
                     </div>
+                    }
                 </div>
             </div>
         </div>

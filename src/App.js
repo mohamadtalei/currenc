@@ -4,8 +4,11 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CurrencyPage from './components/currency-page/CurrencyPage';
 import Layout from './components/layout/Layout';
+import usefetch from 'use-fetch'
+import SearchResult from './components/search-result-page/SearchResult';
 
 function App() {
+  const [currenciesNames, setCurrenciesNames] = useState()
   const theme = useSelector((state) => state.themeReducer);
   useEffect(() => {
     if (theme === "light") {
@@ -21,12 +24,22 @@ function App() {
       document.documentElement.style.setProperty('--secondary-font-color', "#b8b8b8");
     }
   }, [theme])
+  useEffect(() => {  //request for currency symnols
+    // setPending2(true);
+    usefetch(`https://api.frankfurter.app/currencies`, { json: true })
+      .then(response => {
+        setCurrenciesNames(response.body);
+      }).catch(e => {
+        console.log(e)
+      })
+  }, [])
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path="/" element={<Layout onMainPage={true}><Home /></Layout>} />
+          <Route exact path="/" element={<Layout onMainPage={true}><Home currenciesNames={currenciesNames} fullNames={currenciesNames} /></Layout>} />
           <Route path="/:symbol" element={<Layout onMainPage={false}><CurrencyPage /></Layout>} />
+          <Route path="/searchResult/:symbol" element={<Layout onMainPage={false}><SearchResult currenciesNames={currenciesNames} /></Layout>} />
         </Routes>
       </div>
     </Router>
