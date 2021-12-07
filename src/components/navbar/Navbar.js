@@ -6,6 +6,7 @@ import SideMenuIcon from '../../icons/sideMenu';
 import CloseIcon from '../../icons/close';
 import ThemeToggler from './theme-toggler/ThemeToggler';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ onMainPage }) => {
     const navigate = useNavigate()
@@ -54,18 +55,14 @@ const Navbar = ({ onMainPage }) => {
                         })}>
                             <SideMenuIcon />
                         </span>
-                        <a className={cn({
+                        <Link to="/" className={cn({
                             [styles.navItems]: true,
                             [styles.collapsedNavItems]: navCollapse
-                        })}>HOME</a>
-                        <a className={cn({
+                        })}>HOME</Link>
+                        <Link to="/" className={cn({
                             [styles.navItems]: true,
                             [styles.collapsedNavItems]: navCollapse
-                        })}>SAVED</a>
-                        <a className={cn({
-                            [styles.navItems]: true,
-                            [styles.collapsedNavItems]: navCollapse
-                        })}>ABOUT US</a>
+                        })}>ABOUT US</Link>
                         <div className={cn({
                             [styles.ThemeToggler]: true,
                             [styles.collapsedThemeToggler]: navCollapse
@@ -83,9 +80,8 @@ const Navbar = ({ onMainPage }) => {
                 <div className={styles.sideThemeToggler}>
                     <ThemeToggler />
                 </div>
-                <a className={styles.sideNavItems}>HOME</a>
-                <a className={styles.sideNavItems}>SAVED</a>
-                <a className={styles.sideNavItems}>ABOUT US</a>
+                <Link to="/" className={styles.sideNavItems}>HOME</Link>
+                <Link to="/" className={styles.sideNavItems}>ABOUT US</Link>
             </div>
         </>
     );

@@ -10,11 +10,35 @@ const Chart = ({ symbol, base }) => {
     const [today, setToday] = useState()
     const [range, setRange] = useState(0)
     const [startDate, setStartDate] = useState()
+    const [chartWidth, setChartWidth] = useState(700)
     const dateToStr = (d) => {
         // return (d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate()))
         return (d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1 > 9 ? parseInt(d.getMonth()) + 1 : "0" + (parseInt(d.getMonth()) + 1)) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate()))
 
     }
+    const [win, setWindowDimensions] = useState(getWindowDimensions());
+
+    useEffect(() => {
+        function handleResize() {
+            setWindowDimensions(getWindowDimensions());
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    function getWindowDimensions() {
+        const {
+            innerWidth: width
+        } = window;
+        return {
+            width
+        };
+    }
+    useEffect(() => {
+        if (win.width < 900) {
+            setChartWidth(win.width * (7 / 9));
+        }
+    }, [win])
     useEffect(() => {//set range dates
         const d = new Date();
         d.setDate(d.getDate() - 1);
@@ -63,7 +87,7 @@ const Chart = ({ symbol, base }) => {
         <div className={styles.container}>
             <div className={styles.rangeSelector}><RangeSelector range={range} setRange={setRange} /></div>
             <div className={styles.chartContainer}>
-                <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                <LineChart width={chartWidth} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                     <Line type="monotone" dataKey="rate" stroke="#267EDF" />
                     <CartesianGrid stroke="#ccc" strokeDasharray="2 2" />
                     <XAxis dataKey="name" />

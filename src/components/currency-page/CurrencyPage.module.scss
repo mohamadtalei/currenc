@@ -69,3 +69,34 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 880px) {
+    .topDiv{
+        flex-direction: column;
+        .baseSelectorContainer{
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    .symbolContainer{
+        .symbol{
+            .s{
+                font-size: 3rem;
+            }
+        }
+    }
+    .name{
+        font-size: 1rem;
+    }
+    .rateContainer{
+
+        .rateP{
+            font-size: 1.3rem;
+            .rate{
+                font-size: 1.8rem;
+            }
+        }
+    }
+}

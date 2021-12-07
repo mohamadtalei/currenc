@@ -10,7 +10,7 @@ const CurrencyPage = () => {
     const symbol = useParams().symbol;
     const [date, setDate] = useState()
     const [currenciesName, setCurrenciesName] = useState()
-    const [base, setBase] = useState('EUR')
+    const [base, setBase] = useState(symbol === 'EUR' ? 'USD' : 'EUR')
     const [rate, setRate] = useState()
     const [yesterday, setYesterday] = useState()
     const [yesterdayRate, setYesterdayRate] = useState()
@@ -20,7 +20,7 @@ const CurrencyPage = () => {
     }, [base, rate, yesterdayRate])
     useEffect(() => {
         const d = new Date();
-        d.setDate(d.getDate() - 3);
+        d.setDate(d.getDate() - 4);
         setDate((d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate())));
         d.setDate(d.getDate() - 1);
         setYesterday((d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate())));
