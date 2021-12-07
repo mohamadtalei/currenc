@@ -5,6 +5,7 @@ import SearchBar from './search-bar/SearchBar';
 import usefetch from 'use-fetch'
 import { useEffect, useState } from 'react';
 import Loading from './loading/Loading.js';
+import Convertor from '../convertor/Convertor.js';
 
 const Home = ({ currenciesNames, fullNames }) => {
     const [latest, setLatest] = useState();
@@ -78,6 +79,7 @@ const Home = ({ currenciesNames, fullNames }) => {
                     <BaseSelector inside={false} base={base} setBase={setBase} currenciesNames={fullNames} />
                 </div>
                 <CurrencyTable rates={rates} yesterdayRates={yesterdayRates} pending={pending} currenciesNames={currenciesNames} base={base} />
+                <Convertor/>
             </>}
         </div>
     );
