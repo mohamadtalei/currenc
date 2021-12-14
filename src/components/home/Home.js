@@ -75,11 +75,14 @@ const Home = ({ currenciesNames, fullNames }) => {
             {(pending || !currenciesNames || pending3) && <Loading />}
             {!(pending || !currenciesNames || pending3) && <>
                 <div className={styles.topDiv}>
-                    <SearchBar />
-                    <BaseSelector inside={false} base={base} setBase={setBase} currenciesNames={fullNames} />
+                    <div className={styles.searchbarContainer}>
+                        <SearchBar />
+                    </div>
+                    <div className={styles.selectorContainer}>
+                        <BaseSelector inside={false} base={base} setBase={setBase} currenciesNames={fullNames} />
+                    </div>
                 </div>
                 <CurrencyTable rates={rates} yesterdayRates={yesterdayRates} pending={pending} currenciesNames={currenciesNames} base={base} />
-                <Convertor/>
             </>}
         </div>
     );

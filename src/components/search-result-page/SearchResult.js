@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Home from '../home/Home';
 
 const SearchResult = ({ currenciesNames }) => {
-    const symbol = useParams().symbol;
+    const { symbol } = useParams();
     const [result, setResult] = useState({})
     // const result = {}
     useEffect(() => {
@@ -19,7 +19,7 @@ const SearchResult = ({ currenciesNames }) => {
             setResult(res);
         }
         console.log(result);
-    }, [currenciesNames])
+    }, [currenciesNames, symbol])
 
     return (
         <div className={styles.container}>

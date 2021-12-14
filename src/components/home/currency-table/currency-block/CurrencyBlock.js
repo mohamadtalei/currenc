@@ -5,10 +5,13 @@ import Switch from '../../../../icons/switch.js'
 import Star from '../../../../icons/star.js'
 import Chart from '../../../../icons/charts.js'
 import { useNavigate } from "react-router-dom";
+import BaseSelector from '../../base-selector/BaseSelector.js'
 
 const CurrencyBlock = ({ symbol, name, yesterdayRate, base, rate }) => {
     const navigate = useNavigate()
     const [percentage, setPercentage] = useState();
+    const [convertorBase, setConvertorBase] = useState(base);
+    const [convertorToggler, setConvertorToggler] = useState(false);
     useEffect(() => {
         setPercentage(("" + (((rate / yesterdayRate) - 1)) * 100).slice(0, 6));
     }, [base, rate, yesterdayRate])
@@ -32,13 +35,29 @@ const CurrencyBlock = ({ symbol, name, yesterdayRate, base, rate }) => {
                 </div>
                 <div className={styles.iconsContainer}>
                     <div className={styles.icons}>
-                        <span className={styles.switchIcon}><Switch /></span>
+                        <span className={styles.switchIcon} onClick={() => setConvertorToggler(!convertorToggler)}><Switch /></span>
                         <span className={styles.starIcon}><Star /></span>
                         <span className={styles.chartIcon}><Chart /></span>
                     </div>
                 </div>
             </div>
-            <div className="convertor"></div>
+            <div className={cn({
+                [styles.convertor]: true,
+                [styles.openedConvertor]: convertorToggler
+            })}>
+                <div className={styles.topDiv}>
+                    <div className={styles.baseSelector}><p>from {symbol} to </p>
+                        <div className={styles.selectorContainer}>
+                            <BaseSelector base={convertorBase} setBase={setConvertorBase} inside={true} />
+                        </div>
+                    </div>
+                    <button className={styles.convertButton}>convert</button>
+                </div>
+                <div className={styles.bottomDiv}>
+                    <p className={styles.convertorPar}>1 {symbol} =</p>
+                    <p className={styles.convertorResult}>254534 {base}</p>
+                </div>
+            </div>
         </div>
     );
 }

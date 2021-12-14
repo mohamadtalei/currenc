@@ -6,8 +6,8 @@
     --secondary-font-color: #3B3B3B;
     --dark-bf: #2B2B2B;
     --dark-box-bg: #3a3a3a;
-    --green: green;
-    --red: red;
+    --green: rgb(0, 104, 0);
+    --red: rgb(150, 0, 0);
 }
 body{
     margin: 0;
