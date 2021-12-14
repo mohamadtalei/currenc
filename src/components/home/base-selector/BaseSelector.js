@@ -4,7 +4,7 @@ import styles from './BaseSelector.module.scss';
 import cn from "classnames";
 import SelectorItem from './SelectorItem.js/SelectorItem';
 
-const BaseSelector = ({ currenciesNames, setBase, base, inside }) => {
+const BaseSelector = ({ currenciesNames, setBase, base, inside, text }) => {
     const [dropDown, setDropDown] = useState(false);
     return (
         <div className={styles.container}>
@@ -18,7 +18,7 @@ const BaseSelector = ({ currenciesNames, setBase, base, inside }) => {
                     [styles.openedSpace]: dropDown,
                 })}></div>
                 <div className={styles.base}>
-                    Base : {base}
+                    {text} {base}
                 </div>
                 <span className={cn({
                     [styles.icon]: true,
@@ -33,7 +33,7 @@ const BaseSelector = ({ currenciesNames, setBase, base, inside }) => {
                     <div className={styles.itemContainer}>
                         {
                             Object.keys(currenciesNames).filter(c => c != base).map((c) =>
-                                <SelectorItem symbol={c} setBase={setBase} />)
+                            <SelectorItem symbol={c} setBase={setBase} />)
                         }
                     </div>
                     }

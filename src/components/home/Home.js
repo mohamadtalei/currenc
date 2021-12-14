@@ -5,15 +5,12 @@ import SearchBar from './search-bar/SearchBar';
 import usefetch from 'use-fetch'
 import { useEffect, useState } from 'react';
 import Loading from './loading/Loading.js';
-import Convertor from '../convertor/Convertor.js';
 
 const Home = ({ currenciesNames, fullNames }) => {
     const [latest, setLatest] = useState();
     const [base, setBase] = useState("EUR");
-    // const [currenciesNames, setCurrenciesNames] = useState("empty");
     const [date, setDate] = useState()
     const [pending, setPending] = useState();
-    // const [pending2, setPending2] = useState();
     const [pending3, setPending3] = useState();
 
     // useEffect(() => {  //request for currency symnols
@@ -79,7 +76,6 @@ const Home = ({ currenciesNames, fullNames }) => {
                     <BaseSelector inside={false} base={base} setBase={setBase} currenciesNames={fullNames} />
                 </div>
                 <CurrencyTable rates={rates} yesterdayRates={yesterdayRates} pending={pending} currenciesNames={currenciesNames} base={base} />
-                <Convertor/>
             </>}
         </div>
     );
