@@ -4,6 +4,9 @@
 .container{
     display: inline-flex;
     align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 * {
     scrollbar-width: auto;
@@ -31,53 +34,37 @@ body::-webkit-scrollbar-thumb {
     border-radius: 2px;
     border: 4px solid var(--dark-box-bg);
 }
-// body::-webkit-scrollbar-button:single-button {
-//     background-color: #bbbbbb;
-//     display: block;
-//     border-style: solid;
-// }
-// body::-webkit-scrollbar-button:single-button:vertical:decrement {
-//     border-width: 0 8px 8px 8px;
-//     border-color: transparent transparent var(--dark-box-bg) transparent;
-// }
-// body::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
-//     border-color: transparent transparent #777777 transparent;
-// }
-// body::-webkit-scrollbar-button:single-button:vertical:increment {
-//     border-width: 8px 8px 0 8px;
-//     border-color: var(--dark-box-bg) transparent transparent transparent;
-// }
-// body::-webkit-scrollbar-button:vertical:single-button:increment:hover {
-//     border-color: #777777 transparent transparent transparent;
-// }
+.space{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light-blue);
+    height: 23.8px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 0;
+    transition: opacity 0.25s;
+}
+.openedSpace{
+    opacity: 1;
+    visibility: visible;
+}
 .selector{
     width: 232.8px;
     border-radius: 50px;
-    transition: 0.25s;
+    // transition: 0.25s;
     background-color: var(--secondary);
     align-self: stretch;
     box-shadow: 4px 5px 61px -5px rgba(0,0,0,0.25);
+    z-index: 2;
     padding: 10px 10px 10px 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    .space{
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: var(--light-blue);
-        height: 23.8px;
-        opacity: 0;
-        visibility: hidden;
-        z-index: -1;
-        transition: 0.25s;
-    }
-    .openedSpace{
-        opacity: 1;
-        visibility: visible;
-    }
+   
+    
     .base{
         font-family: 'Roboto', sans-serif;
         transform: color 0.25s;

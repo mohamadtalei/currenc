@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Arrow from '../../../icons/arrow';
 import styles from './BaseSelector.module.scss';
 import cn from "classnames";
@@ -13,10 +13,6 @@ const BaseSelector = ({ currenciesNames, setBase, base, inside, text }) => {
                 [styles.selector]: true,
                 [styles.inside]: inside
             })} onClick={() => { setDropDown(!dropDown) }}>
-                <div className={cn({
-                    [styles.space]: true,
-                    [styles.openedSpace]: dropDown,
-                })}></div>
                 <div className={styles.base}>
                     {text} {base}
                 </div>
@@ -39,6 +35,10 @@ const BaseSelector = ({ currenciesNames, setBase, base, inside, text }) => {
                     }
                 </div>
             </div>
+            <div className={cn({
+                [styles.space]: true,
+                [styles.openedSpace]: dropDown,
+            })}></div>
         </div>
     );
 }

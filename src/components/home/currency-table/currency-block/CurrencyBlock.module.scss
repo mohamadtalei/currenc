@@ -1,12 +1,14 @@
 @use "../../../../index.css";
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100&family=Pavanam&family=Dosis:wght@300&display=swap');
 
-.conteiner{
+.container{
     display: flex;
     flex-direction: column;
+    
 }
 .description{
     padding-top: 50px;
+    padding-bottom: 20px;
     display: flex;
 }
 .nameContainer{
@@ -83,4 +85,78 @@
             }
         }
     }
+}
+.convertor{
+    max-height: 0;
+    transition: max-height 0.25s;
+    .topDiv, .bottomDiv{
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.25s ,visibility 0.25s;
+    }
+    // overflow-y: hidden;
+    // *{
+        // visibility: hidden;
+        // opacity: 0;
+        // transition: opacity 0.25s;
+    // }
+    
+    .topDiv{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 15%;
+        .baseSelector{
+            display: flex;
+            p{
+                font-size: 1.3rem;
+                font-family: 'Roboto';
+                color: var(--font-color);
+            }
+            width: 70%;
+            align-items: center;
+            .selectorContainer{
+                padding-left: 20px;
+                width: 60%;
+            }
+        }
+        .convertButton{
+            background-color: var(--light-blue);
+            color: var(--secondary);
+            font-size: 1.2rem;
+            font-family: 'Roboto';
+            border: none;
+            outline: none;
+            border-radius: 30px;
+            padding: 0 20px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+    .bottomDiv{
+        padding: 20px 15%;
+        color: var(--font-color);
+        font-family: 'Roboto';
+        
+        .convertorPar{
+            margin: 10px 0;
+            font-size: 1.4rem;
+        }
+        .convertorResult{
+            margin: 10px 0;
+            font-size: 2rem;
+        }
+    }
+}
+
+.openedConvertor{
+    max-height: 250px;
+    .topDiv ,.bottomDiv{
+        visibility: visible;
+        opacity: 1;
+    }
+    // *{
+    //     visibility: visible;
+    //     opacity: 1;
+    // }
 }

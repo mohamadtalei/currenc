@@ -24,3 +24,13 @@
         color: var(--secondary);
     }
 }
+
+@media only screen and (max-width: 742px) {
+    .container{
+        div{
+            font-size: 0.7rem;
+            margin: 5px 5px;
+            padding: 3px 8px;
+        }
+    }
+}
