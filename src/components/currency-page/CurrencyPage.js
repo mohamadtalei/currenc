@@ -60,7 +60,9 @@ const CurrencyPage = () => {
                             <div className={styles.name}>{currenciesName[symbol]}</div>
                         </div>
                         <div className={styles.baseSelectorContainer}>
-                            <BaseSelector inside={true} base={base} setBase={setBase} currenciesNames={currenciesName} />
+                            <div className={styles.baseSelectot}>
+                                <BaseSelector inside={true} base={base} setBase={setBase} currenciesNames={currenciesName} />
+                            </div>
                         </div>
                     </div>
                     <div className={styles.bottomDiv}>

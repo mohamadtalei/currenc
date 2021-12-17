@@ -1,20 +1,54 @@
-import styles from './CurrencyBlock.module.scss'
+import styles from './CurrencyBlock.module.scss';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
-import Switch from '../../../../icons/switch.js'
-import Star from '../../../../icons/star.js'
-import Chart from '../../../../icons/charts.js'
+import Switch from '../../../../icons/switch.js';
+import Star from '../../../../icons/star.js';
+import Chart from '../../../../icons/charts.js';
 import { useNavigate } from "react-router-dom";
-import BaseSelector from '../../base-selector/BaseSelector.js'
+import BaseSelector from '../../base-selector/BaseSelector.js';
+import usefetch from 'use-fetch';
 
-const CurrencyBlock = ({ symbol, name, yesterdayRate, base, rate }) => {
+const CurrencyBlock = ({ opened, index, setOpened, currenciesNames, symbol, name, yesterdayRate, base, rate }) => {
     const navigate = useNavigate()
     const [percentage, setPercentage] = useState();
     const [convertorBase, setConvertorBase] = useState(base);
     const [convertorToggler, setConvertorToggler] = useState(false);
+    const [convertorResult, setConvertorResult] = useState()
     useEffect(() => {
         setPercentage(("" + (((rate / yesterdayRate) - 1)) * 100).slice(0, 6));
     }, [base, rate, yesterdayRate])
+    // useEffect(() => {  //request for latest prices
+    //     if (convertorBase) {
+    //         usefetch(`https://api.frankfurter.app/latest?from=${symbol}&to=${convertorBase}`, { json: true })
+    //             .then(response => {
+    //                 console.log(response.body);
+    //             }).catch(e => {
+    //                 console.log(e);
+    //             })
+    //     }
+    // }, [convertorBase])
+    useEffect(() => {
+        if (opened != index) {
+            setConvertorToggler(false)
+        }
+    }, [opened])
+    const convertHandler = () => {
+        if (convertorBase) {
+            usefetch(`https://api.frankfurter.app/latest?from=${symbol}&to=${convertorBase}`, { json: true })
+                .then(response => {
+                    setConvertorResult(response.body.rates[convertorBase]);
+                }).catch(e => {
+                    console.log(e);
+                })
+        }
+    }
+    const switchHandler = () => {
+        setConvertorToggler(!convertorToggler)
+        setOpened(index)
+    }
+    useEffect(() => {
+        setConvertorResult();
+    }, [convertorBase])
     return (
         <div className={styles.container}>
             <div className={styles.description}>
@@ -35,9 +69,10 @@ const CurrencyBlock = ({ symbol, name, yesterdayRate, base, rate }) => {
                 </div>
                 <div className={styles.iconsContainer}>
                     <div className={styles.icons}>
-                        <span className={styles.switchIcon} onClick={() => setConvertorToggler(!convertorToggler)}><Switch /></span>
-                        <span className={styles.starIcon}><Star /></span>
-                        <span className={styles.chartIcon}><Chart /></span>
+                        <div className={styles.iconsWrapper}>
+                            <span className={styles.chartIcon}><Chart /></span>
+                            <span className={styles.switchIcon} onClick={switchHandler}><Switch /></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,15 +83,16 @@ const CurrencyBlock = ({ symbol, name, yesterdayRate, base, rate }) => {
                 <div className={styles.topDiv}>
                     <div className={styles.baseSelector}><p>from {symbol} to </p>
                         <div className={styles.selectorContainer}>
-                            <BaseSelector base={convertorBase} setBase={setConvertorBase} inside={true} />
+                            <BaseSelector currenciesNames={currenciesNames} base={convertorBase} setBase={setConvertorBase} inside={true} />
                         </div>
                     </div>
-                    <button className={styles.convertButton}>convert</button>
+                    <button onClick={convertHandler} className={styles.convertButton}>convert</button>
                 </div>
-                <div className={styles.bottomDiv}>
-                    <p className={styles.convertorPar}>1 {symbol} =</p>
-                    <p className={styles.convertorResult}>254534 {base}</p>
-                </div>
+                {convertorResult &&
+                    <div className={styles.bottomDiv}>
+                        <p className={styles.convertorPar}>1 {symbol} =</p>
+                        <p className={styles.convertorResult}>{convertorResult} {convertorBase}</p>
+                    </div>}
             </div>
         </div>
     );

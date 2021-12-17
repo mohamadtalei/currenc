@@ -75,13 +75,19 @@
     .icons{
         flex: 1;
         display: flex;
-        justify-content: center;
-        gap: 15px;
-        span{
-            svg{
-                font-size: 1.2rem;
-                fill: var(--font-color);
-                color: var(--font-color);
+        justify-content: end;
+        padding:  0 20px;
+        .iconsWrapper{
+            gap: 15px;
+            display: inline-flex;
+            flex-direction: column;
+            span{
+                display: inline-block;
+                svg{
+                    font-size: 1.2rem;
+                    fill: var(--font-color);
+                    color: var(--font-color);
+                }
             }
         }
     }
@@ -94,13 +100,6 @@
         opacity: 0;
         transition: opacity 0.25s ,visibility 0.25s;
     }
-    // overflow-y: hidden;
-    // *{
-        // visibility: hidden;
-        // opacity: 0;
-        // transition: opacity 0.25s;
-    // }
-    
     .topDiv{
         display: flex;
         justify-content: space-between;
@@ -155,8 +154,4 @@
         visibility: visible;
         opacity: 1;
     }
-    // *{
-    //     visibility: visible;
-    //     opacity: 1;
-    // }
 }

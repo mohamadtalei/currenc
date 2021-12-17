@@ -10,21 +10,9 @@ import Convertor from '../convertor/Convertor.js';
 const Home = ({ currenciesNames, fullNames }) => {
     const [latest, setLatest] = useState();
     const [base, setBase] = useState("EUR");
-    // const [currenciesNames, setCurrenciesNames] = useState("empty");
     const [date, setDate] = useState()
     const [pending, setPending] = useState();
-    // const [pending2, setPending2] = useState();
     const [pending3, setPending3] = useState();
-
-    // useEffect(() => {  //request for currency symnols
-    //     // setPending2(true);
-    //     usefetch(`https://api.frankfurter.app/currencies`, { json: true })
-    //         .then(response => {
-    //             setCurrenciesNames(response.body);
-    //         }).catch(e => {
-    //             console.log(e)
-    //         })
-    // }, [])
     useEffect(() => {  //request for latest prices
         setPending3(true);
         usefetch(`https://api.frankfurter.app/latest?from=${base}`, { json: true })
@@ -50,10 +38,6 @@ const Home = ({ currenciesNames, fullNames }) => {
             setRates(latest.rates)
         }
     }, [latest])
-    // useEffect(() => {
-    //     console.log(pending, pending2, pending3);
-    // }, [pending, pending2, pending3])
-
     useEffect(() => {
         setPending(true);
         const yesterDay = getYesterday(date);
