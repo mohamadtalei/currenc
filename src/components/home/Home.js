@@ -5,7 +5,6 @@ import SearchBar from './search-bar/SearchBar';
 import usefetch from 'use-fetch'
 import { useEffect, useState } from 'react';
 import Loading from './loading/Loading.js';
-import Convertor from '../convertor/Convertor.js';
 
 const Home = ({ currenciesNames, fullNames }) => {
     const [latest, setLatest] = useState();

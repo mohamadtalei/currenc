@@ -6,6 +6,7 @@ import CurrencyPage from './components/currency-page/CurrencyPage';
 import Layout from './components/layout/Layout';
 import usefetch from 'use-fetch'
 import SearchResult from './components/search-result-page/SearchResult';
+import Convertor from './components/convertor/Convertor.js';
 
 function App() {
   const [currenciesNames, setCurrenciesNames] = useState()
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/" element={<Layout onMainPage={true}><Home currenciesNames={currenciesNames} fullNames={currenciesNames} /></Layout>} />
           <Route path="/:symbol" element={<Layout onMainPage={false}><CurrencyPage /></Layout>} />
           <Route path="/searchResult/:symbol" element={<Layout onMainPage={false}><SearchResult currenciesNames={currenciesNames} /></Layout>} />
+          <Route path="/convertor" element={<Layout onMainPage={false}><Convertor currenciesNames={currenciesNames} /></Layout>} />
         </Routes>
       </div>
     </Router>

@@ -59,7 +59,11 @@ const Navbar = ({ onMainPage }) => {
                             [styles.navItems]: true,
                             [styles.collapsedNavItems]: navCollapse
                         })}>HOME</Link>
-                        <Link to="/" className={cn({
+                        <Link to="/convertor" className={cn({
+                            [styles.navItems]: true,
+                            [styles.collapsedNavItems]: navCollapse
+                        })}>CONVERTOR</Link>
+                        <Link to="/aboutus" className={cn({
                             [styles.navItems]: true,
                             [styles.collapsedNavItems]: navCollapse
                         })}>ABOUT US</Link>

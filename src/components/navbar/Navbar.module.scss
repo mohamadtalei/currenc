@@ -148,6 +148,7 @@ a{
   transition: all .5s;
 }
 .navItems{
+    text-decoration: none;
     position: relative;
     transition: all 2s;
     &::after{
