@@ -13,20 +13,11 @@ const CurrencyBlock = ({ opened, index, setOpened, currenciesNames, symbol, name
     const [percentage, setPercentage] = useState();
     const [convertorBase, setConvertorBase] = useState(base);
     const [convertorToggler, setConvertorToggler] = useState(false);
-    const [convertorResult, setConvertorResult] = useState()
+    const [convertorResult, setConvertorResult] = useState();
+    const [amount, setAmount] = useState(1);
     useEffect(() => {
         setPercentage(("" + (((rate / yesterdayRate) - 1)) * 100).slice(0, 6));
     }, [base, rate, yesterdayRate])
-    // useEffect(() => {  //request for latest prices
-    //     if (convertorBase) {
-    //         usefetch(`https://api.frankfurter.app/latest?from=${symbol}&to=${convertorBase}`, { json: true })
-    //             .then(response => {
-    //                 console.log(response.body);
-    //             }).catch(e => {
-    //                 console.log(e);
-    //             })
-    //     }
-    // }, [convertorBase])
     useEffect(() => {
         if (opened != index) {
             setConvertorToggler(false)
@@ -81,17 +72,27 @@ const CurrencyBlock = ({ opened, index, setOpened, currenciesNames, symbol, name
                 [styles.openedConvertor]: convertorToggler
             })}>
                 <div className={styles.topDiv}>
-                    <div className={styles.baseSelector}><p>from {symbol} to </p>
-                        <div className={styles.selectorContainer}>
-                            <BaseSelector currenciesNames={currenciesNames} base={convertorBase} setBase={setConvertorBase} inside={true} />
+                    <div className={styles.baseAndButton}>
+                        <div className={styles.baseSelector}><p>from {symbol} to </p>
+                            <div className={styles.selectorContainer}>
+                                <BaseSelector currenciesNames={currenciesNames} base={convertorBase} setBase={setConvertorBase} inside={true} />
+                            </div>
+                        </div>
+                        <div className={styles.amountContainer}>
+                            <div className={styles.amountWrapper}>
+                                Amount: <input onChange={(e) => setAmount(e.target.value)} value={amount} className={styles.amount} type="number" />
+                            </div>
                         </div>
                     </div>
-                    <button onClick={convertHandler} className={styles.convertButton}>convert</button>
+                    <div className={styles.buttonContainer}>
+                        <button onClick={convertHandler} className={styles.convertButton}>convert</button>
+                    </div>
+
                 </div>
                 {convertorResult &&
                     <div className={styles.bottomDiv}>
-                        <p className={styles.convertorPar}>1 {symbol} =</p>
-                        <p className={styles.convertorResult}>{convertorResult} {convertorBase}</p>
+                        <p className={styles.convertorPar}>{amount > 0 ? amount : 1} {symbol} =</p>
+                        <p className={styles.convertorResult}>{amount > 0 ? convertorResult * amount : convertorResult} {convertorBase}</p>
                     </div>}
             </div>
         </div>

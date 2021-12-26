@@ -4,7 +4,7 @@
 .container{
     display: flex;
     flex-direction: column;
-    
+    margin-bottom: 20px;
 }
 .description{
     padding-top: 50px;
@@ -57,7 +57,7 @@
     }
 }
 .priceContainer{
-    width: 30%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,7 +68,7 @@
     }
 }
 .iconsContainer{
-    width: 30%;
+    width: 10%;
     margin-bottom: 17.6px;
     display: flex;
     align-items: flex-end;
@@ -76,7 +76,7 @@
         flex: 1;
         display: flex;
         justify-content: end;
-        padding:  0 20px;
+        padding:  0 10px;
         .iconsWrapper{
             gap: 15px;
             display: inline-flex;
@@ -101,36 +101,69 @@
         transition: opacity 0.25s ,visibility 0.25s;
     }
     .topDiv{
-        display: flex;
-        justify-content: space-between;
-        padding: 20px 15%;
-        .baseSelector{
-            display: flex;
-            p{
-                font-size: 1.3rem;
+        .buttonContainer{
+            padding: 0 15%;
+            .convertButton{
+                height: 41.6px;
+                background-color: var(--light-blue);
+                color: var(--secondary);
+                font-size: 1.2rem;
                 font-family: 'Roboto';
-                color: var(--font-color);
-            }
-            width: 70%;
-            align-items: center;
-            .selectorContainer{
-                padding-left: 20px;
-                width: 60%;
-            }
-        }
-        .convertButton{
-            background-color: var(--light-blue);
-            color: var(--secondary);
-            font-size: 1.2rem;
-            font-family: 'Roboto';
-            border: none;
-            outline: none;
-            border-radius: 30px;
-            padding: 0 20px;
-            &:hover{
-                cursor: pointer;
+                border: none;
+                outline: none;
+                border-radius: 30px;
+                padding: 0 20px;
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
+        .baseAndButton{
+            display: flex;
+            // justify-content: space-between;
+            padding: 20px 15%;
+            .baseSelector{
+                flex-grow: 1;
+                display: inline-flex;
+                p{
+                    font-size: 1rem;
+                    font-family: 'Roboto';
+                    color: var(--font-color);
+                }
+                width: 50%;
+                align-items: center;
+                .selectorContainer{
+                    padding-left: 20px;
+                    width: 60%;
+                }
+            }
+            .amountContainer{
+                flex-grow: 1;
+                display: flex;
+                justify-content: end;
+                .amountWrapper{
+                    display: inline;
+                    font-size: 1rem;
+                    font-family: 'Roboto';
+                    color: var(--font-color);
+                    .amount{
+                        border: none;
+                        outline: none;
+                        font-size: 1.3rem;
+                        font-family: 'Roboto';
+                        color: var(--light-blue);
+                        box-shadow: 3px 3px 14px 0px rgba(0,0,0,0.25)  inset;
+                        background-color: var(--primary);
+                        border-radius: 30px;
+                        height: 41.6px;
+                        padding: 0 15px;
+                        width: 100px;
+                    }
+                }
+            }
+            
+        }
+        
     }
     .bottomDiv{
         padding: 20px 15%;
@@ -149,9 +182,65 @@
 }
 
 .openedConvertor{
-    max-height: 250px;
+    max-height: 300px;
     .topDiv ,.bottomDiv{
         visibility: visible;
         opacity: 1;
+    }
+}
+
+@media only screen and (min-width: 1070px) and (max-width: 1435px) , (max-width: 951px) {
+	.convertor{
+        .topDiv{
+            .baseAndButton{
+                flex-direction: column;
+                gap: 10px;
+                .baseSelector{
+                    width: 100%;
+                }
+                .amountContainer{
+                    justify-content: start;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 623px){
+	.description{
+        justify-content: space-between;
+        .nameContainer{
+            display: inline;
+            width: unset;
+        }
+        .priceContainer{
+            display: inline;
+            width: unset;
+        }
+        .iconsContainer{
+            display: inline;
+            width: unset;
+        }
+    }
+}
+
+@media only screen and (max-width: 515px){
+	.description{
+        .nameContainer{
+            display: inline;
+            width: unset;
+            .symbolContainer{
+                .percentage{
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+    .convertor{
+        .topDiv{
+            .baseAndButton{
+                padding: 15px 5%;
+            }
+        }
     }
 }
