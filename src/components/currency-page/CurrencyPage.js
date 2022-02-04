@@ -20,10 +20,14 @@ const CurrencyPage = () => {
     }, [base, rate, yesterdayRate])
     useEffect(() => {
         const d = new Date();
-        d.setDate(d.getDate() - 4);
-        setDate((d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate())));
         d.setDate(d.getDate() - 1);
-        setYesterday((d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate())));
+        setDate(d.getFullYear() + "-"
+            + (d.getMonth() > 9 ? (parseInt(d.getMonth()) + 1) : "0" + (parseInt(d.getMonth()) + 1)) + "-"
+            + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate()));
+        d.setDate(d.getDate() - 1);
+        setYesterday(d.getFullYear() + "-"
+            + (d.getMonth() > 9 ? (parseInt(d.getMonth()) + 1) : "0" + (parseInt(d.getMonth()) + 1)) + "-"
+            + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate()));
     }, [])
     useEffect(() => {
         usefetch(`https://api.frankfurter.app/currencies`, { json: true })

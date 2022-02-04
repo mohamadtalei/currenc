@@ -29,7 +29,9 @@ const Home = ({ currenciesNames, fullNames }) => {
     const getYesterday = (date) => {
         const d = new Date(date);
         d.setDate(d.getDate() - 1);
-        return (d.getFullYear() + "-" + (parseInt(d.getMonth()) + 1) + "-" + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate()));
+        return (d.getFullYear() + "-"
+            + (d.getMonth() > 9 ? (parseInt(d.getMonth()) + 1) : "0" + (parseInt(d.getMonth()) + 1)) + "-"
+            + (d.getUTCDate() > 9 ? d.getUTCDate() : "0" + d.getUTCDate()));
     }
 
     useEffect(() => {
@@ -41,7 +43,7 @@ const Home = ({ currenciesNames, fullNames }) => {
         setPending(true);
         const yesterDay = getYesterday(date);
         if (date && yesterDay) {
-
+            console.log(date);
             usefetch(`https://api.frankfurter.app/${yesterDay}?from=${base}`, { json: true })
                 .then(response => {
                     setYesterdayRates(response.body.rates);
@@ -51,6 +53,9 @@ const Home = ({ currenciesNames, fullNames }) => {
                 })
         }
     }, [base, date])
+    // useEffect(() => {
+    //     console.log()
+    // }, [])
 
     return (
         <div className={styles.container}>

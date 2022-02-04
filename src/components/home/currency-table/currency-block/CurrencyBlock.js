@@ -2,7 +2,6 @@ import styles from './CurrencyBlock.module.scss';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import Switch from '../../../../icons/switch.js';
-import Star from '../../../../icons/star.js';
 import Chart from '../../../../icons/charts.js';
 import { useNavigate } from "react-router-dom";
 import BaseSelector from '../../base-selector/BaseSelector.js';
@@ -19,7 +18,7 @@ const CurrencyBlock = ({ opened, index, setOpened, currenciesNames, symbol, name
         setPercentage(("" + (((rate / yesterdayRate) - 1)) * 100).slice(0, 6));
     }, [base, rate, yesterdayRate])
     useEffect(() => {
-        if (opened != index) {
+        if (opened !== index) {
             setConvertorToggler(false)
         }
     }, [opened])

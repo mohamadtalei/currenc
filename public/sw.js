@@ -1,4 +1,4 @@
-const cacheName = 'site-static';
+const cacheName = 'site-static-v1';
 const assets = ['/fallback.html'];
 
 self.addEventListener('install', event => {
@@ -24,9 +24,9 @@ self.addEventListener('fetch', event => {
     event.respondWith(
         fetch(event.request).then(fetchRes => {
             return fetchRes;
-        }).catch(() =>
-            // caches.match('/fallback.html')
-            console.log("failed")
-        )
+        })
+            .catch(() =>
+                caches.match('/fallback.html')
+            )
     );
 });

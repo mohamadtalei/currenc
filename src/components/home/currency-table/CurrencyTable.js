@@ -8,7 +8,7 @@ const CurrencyTable = ({ pending, currenciesNames, base, yesterdayRates, rates }
         <>
             {rates && yesterdayRates && currenciesNames && !pending &&
                 <div div className={styles.container}>
-                    {Object.keys(currenciesNames).filter(c => c != base).map((c, i) =>
+                    {Object.keys(currenciesNames).filter(c => c !== base).map((c, i) =>
                         <div className={styles.currnecyBlock}>
                             <CurrencyBlock opened={opened} index={i} setOpened={setOpened} base={base} rate={rates[c]} symbol={c} name={currenciesNames[c]} yesterdayRate={yesterdayRates[c]} currenciesNames={currenciesNames} />
                         </div>

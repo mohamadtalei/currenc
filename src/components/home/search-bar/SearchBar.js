@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import SerachIcon from '../../../icons/search';
 import styles from './SearchBar.module.scss';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const SearchBar = () => {
     const [input, setInput] = useState()
