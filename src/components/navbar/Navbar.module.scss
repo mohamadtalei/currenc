@@ -179,6 +179,7 @@ a{
 .collapsedNavbar{
     margin: 0;
     transition: 0.5s;
+    align-items: center;
 }
 .collapsedLogo{
     margin: 0;
@@ -205,6 +206,7 @@ a{
     margin: 0 40px 0 0;
     .collapsedNavItems{
         color: var(--font-color);
+        padding-bottom: 0;
         &::after{
             background: var(--font-color);
         }
@@ -229,6 +231,7 @@ a{
     visibility: hidden;
     position: relative;
     transition: 0.5s;
+    margin-top: 3px;
     left: 200px;
 }
 .collapsedThemeToggler{
