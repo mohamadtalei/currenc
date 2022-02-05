@@ -34,6 +34,9 @@ function App() {
         console.log(e)
       })
   }, [])
+  useEffect(() => {
+    console.log(currenciesNames);
+  }, [currenciesNames])
   return (
     <Router>
       <div className="App">

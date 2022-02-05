@@ -1,102 +1,82 @@
-import styles from './Convertor.module.scss'
-import cn from "classnames";
 import { useState } from 'react';
 import BaseSelector from '../home/base-selector/BaseSelector';
-import FromSelector from './from-selector/FromSelector.js'
-import SelectorItem from '../home/base-selector/SelectorItem.js/SelectorItem.js';
+import styles from './Convertor.module.scss';
+import usefetch from 'use-fetch';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import cn from 'classnames'
 
-const Convertor = (currenciesNames) => {
-    const [fromDropDown,set_fromDropDown] = useState(false)
-    const [toDropDown,set_toDropDown] = useState(false)
-    const [convertedNumber,convertedNumSetter] = useState(0)
-
-    console.log(currenciesNames);
-
-    return ( 
+const Convertor = ({ currenciesNames }) => {
+    const [from, setFrom] = useState();
+    const [to, setTo] = useState();
+    const [amount, setAmount] = useState(1);
+    const [result, setResult] = useState();
+    const [reverseResult, setReverseResult] = useState();
+    const convert = () => {
+        if (from && to) {
+            usefetch(`https://api.frankfurter.app/latest?from=${from}&to=${to}`, { json: true })
+                .then(response => {
+                    setResult(response.body.rates[to]);
+                }).catch(e => {
+                    console.log(e);
+                });
+            usefetch(`https://api.frankfurter.app/latest?from=${to}&to=${from}`, { json: true })
+                .then(response => {
+                    setReverseResult(response.body.rates[from]);
+                }).catch(e => {
+                    console.log(e);
+                });
+        }
+    }
+    useEffect(() => {
+        setResult();
+    }, [to, from])
+    return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
-
-                <div className={styles.topic}> CONVERTOR </div>
-                <div className={styles.content}>
-                    <p> Amount : </p>
-                    <input type="number" required /* value={flaotNumber} */ step="0.1" placeholder="" /*onChange={e => numFloater(e.target.value)} */ className={styles.amount}/> 
-                </div>
-
-                <div className={styles["from-to"]}>
-
-                    {/* part 1 : from */}
-
-                    <div className={styles["from-container"]}>
-
-                        <p><b> Convert From : </b></p>
-
-                        <div className={styles["BaseSelector-container"]}>
-                            <BaseSelector/>
-                        </div>
-
-                        {currenciesNames && <div className={styles}>
-                            {
-                                Object.keys(currenciesNames).map(() => <FromSelector />)
-                            }   
-                        </div>}    
-
-                        {/* <div className={cn({[styles.from]:true,  [styles.inside]: inside  })}
-                            onClick={()=>{set_fromDropDown(!fromDropDown)}}>
-                            <span className={cn({[styles.icon]: true, [styles.transformedArrow]: fromDropDown})}>
-                            <Arrow />
-                            </span>
-                        </div>
-                        
-                        <div className={cn({[styles["from-options"]]:true, [styles.opened]:fromDropDown})}>
-                                {currenciesNames &&<div className={styles.itemContainer}>
-                                    {
-                                        Object.keys(currenciesNames).filter(c => c != base).map((c) =>
-                                            <SelectorItem symbol={c} setBase={setBase} />)
-                                    }
-                                </div>
-                                }
-                        </div> */}
-
+                <div className={styles.selectors}>
+                    <div className={styles.amountContainer}>
+                        Amount: <input className={styles.amount} type="number" onChange={(e) => setAmount(e.target.value)} value={amount} />
                     </div>
-
-                    {/* part 2 : to */}
-
-                    <div className={styles["to-container"]}>
-
-                        <p><b> to : </b></p>
-
-                        <div className={styles["BaseSelector-container"]}>
-                            <BaseSelector/>
+                    <div className={styles.BaseSelectors}>
+                        <div className={styles.fromContainer}>
+                            <BaseSelector
+                                base={from}
+                                currenciesNames={currenciesNames}
+                                inside={true}
+                                setBase={setFrom}
+                                text={"from: "}
+                            />
                         </div>
-
-                        {/* <div className={cn({[styles.to]:true, [styles.inside]: inside })}
-                            onClick={()=>{set_toDropDown(!toDropDown)}}>
-                            <span className={cn({[styles.icon]: true, [styles.transformedArrow]: toDropDown})}>
-                            <Arrow />
-                            </span>
+                        <div className={styles.toContainer}>
+                            <BaseSelector
+                                base={to}
+                                currenciesNames={currenciesNames}
+                                inside={true}
+                                setBase={setTo}
+                                text={"to: "}
+                            />
                         </div>
-                        
-                        <div className={cn({[styles["to-options"]]:true, [styles.opened]:toDropDown})}>
-                                {currenciesNames &&<div className={styles.itemContainer}>
-                                    {
-                                        Object.keys(currenciesNames).filter(c => c != base).map((c) =>
-                                            <SelectorItem symbol={c} setBase={setBase} />)
-                                    }
-                                </div>
-                                }
-                        </div> */}
-
+                    </div>
+                </div>
+                <div className={styles.buttonContainer}>
+                    <button onClick={() => convert()} className={styles.convertButton}>Convert</button>
+                </div>
+                <div className={cn({
+                    [styles.resultContainer]: true,
+                    [styles.closed]: !result,
+                    [styles.opened]: result
+                })}>
+                    <p className={styles.fromP}>{amount ? amount : 1} <Link to={`/${from}`}>{from} </Link>= </p>
+                    <div className={styles.resultDiv}>
+                        <p className={styles.toP}>{('' + (amount ? amount * result : result)).substring(0, 7)} <Link to={`/${to}`}>{to}</Link></p>
+                        <p className={styles.reverseResult}>1 {to} = {('' + reverseResult).substring(0, 7)} {from}</p>
                     </div>
                 </div>
 
-                <div className={styles.converted}>
-                    <span className={styles["converted-number"]}>
-                        {convertedNumber}
-                    </span>
-                </div>
-            </div>  
+            </div>
         </div>
     );
 }
- 
+
 export default Convertor;

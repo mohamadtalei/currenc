@@ -85,6 +85,7 @@ const Navbar = ({ onMainPage }) => {
                     <ThemeToggler />
                 </div>
                 <Link to="/" className={styles.sideNavItems}>HOME</Link>
+                <Link to="/convertor" className={styles.sideNavItems}>CONVERTOR</Link>
                 <Link to="/" className={styles.sideNavItems}>ABOUT US</Link>
             </div>
         </>
