@@ -63,10 +63,6 @@ const Navbar = ({ onMainPage }) => {
                             [styles.navItems]: true,
                             [styles.collapsedNavItems]: navCollapse
                         })}>CONVERTOR</Link>
-                        <Link to="/aboutus" className={cn({
-                            [styles.navItems]: true,
-                            [styles.collapsedNavItems]: navCollapse
-                        })}>ABOUT US</Link>
                         <div className={cn({
                             [styles.ThemeToggler]: true,
                             [styles.collapsedThemeToggler]: navCollapse
@@ -86,7 +82,6 @@ const Navbar = ({ onMainPage }) => {
                 </div>
                 <Link to="/" className={styles.sideNavItems}>HOME</Link>
                 <Link to="/convertor" className={styles.sideNavItems}>CONVERTOR</Link>
-                <Link to="/" className={styles.sideNavItems}>ABOUT US</Link>
             </div>
         </>
     );
